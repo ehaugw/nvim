@@ -2,11 +2,6 @@ set encoding=utf-8
 " let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
-
-""""""""""""""""""""""""""""""""""""""""
-"       NATIVE VIM CONFIGURATIONS      "
-""""""""""""""""""""""""""""""""""""""""
-
 " clear space function before setting to leader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
@@ -18,37 +13,41 @@ let mapleader=" "
 " cnoremap <Up> <Nop>
 
 " Remove newbie crutches in Insert Mode
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-inoremap <Up> <Nop>
+" inoremap <Down> <Nop>
+" inoremap <Left> <Nop>
+" inoremap <Right> <Nop>
+" inoremap <Up> <Nop>
+" 
+" " Remove newbie crutches in Normal Mode
+" nnoremap <Down> <Nop>
+" nnoremap <Left> <Nop>
+" nnoremap <Right> <Nop>
+" nnoremap <Up> <Nop>
+" 
+" " Remove newbie crutches in Visual Mode
+" vnoremap <Down> <Nop>
+" vnoremap <Left> <Nop>
+" vnoremap <Right> <Nop>
+" vnoremap <Up> <Nop>
 
-" Remove newbie crutches in Normal Mode
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
 
-" Remove newbie crutches in Visual Mode
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-vnoremap <Up> <Nop>
+""""""""""""""""""""""""""""""""""""""""
+"       NATIVE VIM CONFIGURATIONS      "
+""""""""""""""""""""""""""""""""""""""""
 
 " create a new variable field
 autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }<Esc>7b
 " execute file as script
 autocmd FileType python map <leader>ef :! python $(realpath %)<CR>
 autocmd FileType lua    map <leader>ef :! lua5.1 %<CR>
-autocmd FileType c      map <leader>ef :! gcc -o tmpexec %; ./tmpexec ; rm tmpexec<CR>
+autocmd FileType c      map <leader>ef :! gcc % -o nvimtmpcfile; ./nvimtmpcfile; rm nvimtmpcfile<CR>
 " SET leader to JK
 inoremap <special> jk <ESC>
 " CUSTOM VANILLA KEY BINDINGS
 map <leader>fu a t(-_-t)<Esc>8h
 " search in artsy files
 map <leader>faa :! grep -r "artsy" -e ""<left>
-" search in local folder
-map <leader>fa :! grep -r "./" -e ""<left>
+map <leader>fah :! grep -r "./" -e ""<left>
 " move cursor to top of screen
 map <leader>j 20j20k
 " wrap word in space
@@ -56,8 +55,6 @@ map <leader>fw i <Esc>2wi <Esc>
 " break function call to new line
 " map <leader>fl i<CR><Esc>$i<CR><Esc>kk$
 map <leader>fl li<CR><Esc>k$%i<CR><Esc>kk$
-" auto indent line
-map <leader>fi kJi<CR><Esc>
 " delete trailing
 map <leader>dtw :%s/\s\+$//gce<CR>
 " wrap all operators
@@ -92,15 +89,14 @@ set wildmode=longest,list
 "OTHER
 set cursorline                                                              " will also highlight what you wrote last
 autocmd FileType python let python_highlight_all = 1
-autocmd FileType cs let g:OmniSharp_highlight_types = 2
 syntax on
 
 set showmatch                                                               " show matching paranthes
 set number                                                                  " show line numbers
 set cc=120                                                                  " show end of 80 characters
-" set mouse=a                                                                 " enable mouse interactions in vim
+set mouse=a                                                                 " enable mouse interactions in vim
 " this requires win32yank
-set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
+" set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
 syntax enable
 set fileformat=unix
 
@@ -137,8 +133,8 @@ autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " END OF CONFIGURE FLAKE 8
 
 " CONFIGURE PYDOCSTRING
-" let g:pydocstring_doq_path ='~/.local/bin/doq'                              " needed for py-docstring
-" map <leader>pd :Pydocstring<CR>
+let g:pydocstring_doq_path ='~/.local/bin/doq'                              " needed for py-docstring
+map <leader>pd :Pydocstring<CR>
 " END OF CONFIGURE PYDOCSTRING
 
 " CONFIGURE NERD TREE
@@ -224,9 +220,7 @@ let g:jedi#use_tabs_not_buffers = 1
 
 " SET OMNISHARP KEYBINDINGS
 autocmd FileType cs nnoremap <leader>d :OmniSharpGotoDefinition tabedit<CR>
-autocmd FileType cs nnoremap <leader>pd :OmniSharpPreviewDefinition<CR>
 autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
-" OmniSharpDocumentation to show documentation
 " END OF SET OMNISHARP KEYBINDINGS
 
 " #################### READMEs ####################
