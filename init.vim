@@ -97,7 +97,7 @@ set number                                                                  " sh
 set cc=120                                                                  " show end of 80 characters
 set mouse=a                                                                 " enable mouse interactions in vim
 " this requires win32yank
-" set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
+set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
 syntax enable
 set fileformat=unix
 
