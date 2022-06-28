@@ -233,6 +233,8 @@ autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
 "
 "
 " INSTALL NEOVIM
+" sudo apt-get update
+" sudo apt-get upgrade
 " sudo apt install neovim
 " sudo apt install python3-pip
 " sudo apt install python3.8-venv
