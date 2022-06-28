@@ -240,5 +240,5 @@ autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
 " sudo apt install python3.8-venv
 " pip3 install pynvim --upgrade
 " pip3 install msgpack --upgrade
-" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 "
