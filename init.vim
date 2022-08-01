@@ -95,7 +95,7 @@ syntax on
 set showmatch                                                               " show matching paranthes
 set number                                                                  " show line numbers
 set cc=120                                                                  " show end of 80 characters
-set mouse=a                                                                 " enable mouse interactions in vim
+" set mouse=a                                                                 " enable mouse interactions in vim
 " this requires win32yank
 set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
 syntax enable
