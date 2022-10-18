@@ -183,8 +183,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright', 'coc-l
 
 " SET COC KEYBINDINGS
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>e :<C-u>CocList diagnostics<cr>
+nmap <leader>n <Plug>(coc-references)
+nmap <leader>le :<C-u>CocList diagnostics<cr>
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 " END OF SET COC KEYBINDINGS
@@ -204,16 +204,11 @@ autocmd FileType lua set signcolumn=yes
 " sudo apt install neovim
 " sudo apt install python3-pip
 " sudo apt install python3.8-venv
+" sudo apt install nodejs
+" sudo apt install npm
+" sudo npm install -g n
+" sudo n stable
 " pip3 install pynvim --upgrade
 " pip3 install msgpack --upgrade
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"
-" INSTALL COC.NVIM
-" Should be obsolete due to coc_global_extension
-    " :CocInstall coc-json coc-tsserver
-    " :CocInstall coc-pyright
-    " :CocInstall coc-lua
-" :CocConfig
-"    {
-"        "suggest.noselect": true
-"    }
+
