@@ -104,6 +104,7 @@ set fileformat=unix
 call plug#begin()
     Plug 'OmniSharp/omnisharp-vim'                                          " C# ide like behaviour
     " Plug 'alec-gibson/nvim-tetris'                                          " tetris 
+    Plug 'johngrib/vim-game-snake'                                          " snake
     Plug 'vim-python/python-syntax'                                         " unknown
     Plug 'dominikduda/vim_current_word'                                     " underline all occurences of current word
     Plug 'VundleVim/Vundle.vim'                                             " vundle package handler
@@ -125,6 +126,7 @@ call plug#begin()
         endif
     " end of deoplete is an async jedi
     Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }   " autogen docstring
+    Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 
 " CONFIGURE FLAKE 8
@@ -240,7 +242,7 @@ autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
 " sudo apt install python3.8-venv
 " pip3 install pynvim --upgrade
 " pip3 install msgpack --upgrade
-" if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
+" If Makefile doesn't work
+    " if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 " inside nvim:
 "   :PlugInstall
-"   :VundleInstall
