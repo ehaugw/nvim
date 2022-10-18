@@ -102,12 +102,9 @@ syntax enable
 set fileformat=unix
 
 call plug#begin()
-    Plug 'OmniSharp/omnisharp-vim'                                          " C# ide like behaviour
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " general autocomplete and goto
     " Plug 'alec-gibson/nvim-tetris'                                          " tetris 
-    Plug 'johngrib/vim-game-snake'                                          " snake
-    Plug 'vim-python/python-syntax'                                         " unknown
     Plug 'dominikduda/vim_current_word'                                     " underline all occurences of current word
-    Plug 'VundleVim/Vundle.vim'                                             " vundle package handler
     Plug 'vim-scripts/indentpython.vim'                                     " auto indentation
     Plug 'nvie/vim-flake8'                                                  " linting tool
     Plug 'jnurmine/Zenburn'                                                 " color scheme
@@ -115,18 +112,6 @@ call plug#begin()
     " Plug 'morhetz/gruvbox'                                                  " color scheme 
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
-    " Plug 'ColinKennedy/vim-python-function-expander'                        " unknown   - long load time
-    " deoplete is an async jedi
-        if has('nvim')
-          Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " auto complete
-        else
-          Plug 'Shougo/deoplete.nvim'                                       " auto complete
-          Plug 'roxma/nvim-yarp'                                            " auto complete
-          Plug 'roxma/vim-hug-neovim-rpc'
-        endif
-    " end of deoplete is an async jedi
-    Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }   " autogen docstring
-    Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 
 " CONFIGURE FLAKE 8
@@ -189,42 +174,21 @@ else
 endif
 " END OF SET COLOR THEME
 
-" VUMBLE IMPORTS
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/vundle/Vundle.vim
-call vundle#begin()
-    " Bundle 'jistr/vim-nerdtree-tabs'                  " name tabs with proper name rather than nerd_tree_1
-" call vundle#begin('C:\Users\eivind.haug-warberg\AppData\Local\nvim\vundle')
-    Bundle 'VundleVim/Vundle.vim'
-"   Bundle 'Valloric/YouCompleteMe'
-    Plugin 'davidhalter/jedi-vim'                       " goto functionality, also used for autocomplete
-    " Bundle 'jistr/vim-nerdtree-tabs'                  " I use another nerd tree tabs
-call vundle#end()
-filetype plugin indent on
-" VUMBLE IMPORTS END
-
 " LET NERD TREE IGNORE .pyc
     let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " END OF LET NERD TREE IGNORE .pyc
 
-" SET JEDI KEYBINDINGS
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<leader>gd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#completions_enabled = 0                      " turn off jedi autocomplete and rather use deoplete
-let g:jedi#use_tabs_not_buffers = 1
-" END OF SET JEDI KEYBINDINGS
+" LOAD COC MODULES
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua']
 
-" SET OMNISHARP KEYBINDINGS
-autocmd FileType cs nnoremap <leader>gd :OmniSharpGotoDefinition tabedit<CR>
-autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
-" END OF SET OMNISHARP KEYBINDINGS
+" SET COC KEYBINDINGS
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>e :<C-u>CocList diagnostics<cr>
+autocmd FileType python set signcolumn=yes
+autocmd FileType lua set signcolumn=yes
+" END OF SET COC KEYBINDINGS
+
 
 " #################### READMEs ####################
 "
@@ -242,7 +206,14 @@ autocmd FileType cs nnoremap <leader>n :OmniSharpFindUsages<CR>
 " sudo apt install python3.8-venv
 " pip3 install pynvim --upgrade
 " pip3 install msgpack --upgrade
-" If Makefile doesn't work
-    " if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
-" inside nvim:
-"   :PlugInstall
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"
+" INSTALL COC.NVIM
+" Should be obsolete due to coc_global_extension
+    " :CocInstall coc-json coc-tsserver
+    " :CocInstall coc-pyright
+    " :CocInstall coc-lua
+" :CocConfig
+"    {
+"        "suggest.noselect": true
+"    }
