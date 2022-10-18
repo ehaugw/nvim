@@ -40,7 +40,7 @@ autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }
 " execute file as script
 autocmd FileType python map <leader>ef :! python $(realpath %)<CR>
 autocmd FileType lua    map <leader>ef :! lua5.1 %<CR>
-autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o nvimtmpcfile && ./nvimtmpcfile && rm nvimtmpcfile; else make ccompileandexecute; fi<CR>
+autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make ccompileandexecute; fi<CR>
 
 " SET leader to JK
 inoremap <special> jk <ESC>
