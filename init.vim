@@ -187,6 +187,7 @@ nmap <leader>n <Plug>(coc-references)
 nmap <leader>le :<C-u>CocList diagnostics<cr>
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
+let g:coc_disable_startup_warning=1
 " END OF SET COC KEYBINDINGS
 
 
