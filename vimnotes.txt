@@ -36,6 +36,11 @@ NAVIGATION:
 	number	G	move to line number
 		gg	move to first line
 		G	move to end of file
+    [[      start of class
+    ]]      end of class
+    [m      start of function
+    ]m      start of next function
+    ]M      end of function
 
 SEARCHING:
 	/	search forwards
