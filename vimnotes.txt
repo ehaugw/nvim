@@ -1,0 +1,110 @@
+NOTE: in visual and normal mode, the cursor should be FAT and highlight
+the character after the cursor. In gitbash, it is not fat, and thus
+delete, yank and paste will seem to operate on the next character too.
+
+
+CONFIGURING VIM:
+	Edit ~/.vimrc to make configurations take affect whenever VIM i started
+
+	set	ic		ignore case when searching
+	set 	hlsearch	highlight all matches when searching
+	set	noXXX		turn off feature XXX
+
+GOOD GUIDES:
+	copy, cut and paste:	https://vim.fandom.com/wiki/Copy,_cut_and_paste
+
+EXECUTE COMMAND:
+	:!<command>	execute the CLI command while inside vim
+	:sort		sort selected lines alphabetically
+
+SAVING:
+	:w FILENAME	save file to FILENAME
+			save only selected text if in virtual mode
+	:r FILENAME	insert contents from FILENAME
+	:r !command	insert whatever would be printed to console
+
+NAVIGATION:
+	+		move to start of indented next line
+	^		move to start of indented line
+	$		move to end of line
+	%		move to matching (, [, {
+	0		move to start of line
+	e		move to end of word, including last character 
+	w		move to start of next word, excluding first character
+	f	char	move to first occurence of char
+	b		move ti previous word
+	number	G	move to line number
+		gg	move to first line
+		G	move to end of file
+
+SEARCHING:
+	/	search forwards
+	?	search backwards
+	n	next hit
+	N	previous hit
+	ctrl-o	return to previous cursor location
+	ctrl-i	proceed to next cursor location
+	g*	search for word under cursor
+	#	search for mouseover word, going backwards
+
+REPLACING
+	:s/old/new	replace the first occurance of "old" with "new" on that line
+	:s/old/new/g	replace all occurances of "old" with "new" on that line
+	:#,#s/old/new/g	replace all occurences of "old" with "new" between the two line #'s
+	:%s/old/new/g	replace all occurences of "old" with "new" globally
+	
+	add c after g	ask for confirmation after each repalce
+	
+INSERT MODES:
+	i	insert before cursor
+	I	insert at beginning of line
+	ctrl-i	insert block mode
+	a	append after cursor
+	A	append at end of line
+	o	append at new line bellow cursor
+	O	append at new line above cursor
+        c       delete motion then insert
+
+n: normal mode (edit stuff)
+	ci"	c[hange] i[nside] [any character, like the quotation mark]
+
+i: insert mode (write stuff)
+	ctrl-w:	delete word
+	ctrl-xf:file name completion
+		ctrl-n / ctrl-p cycle through names
+	ctrl-xn:line completion
+		ctrl-n / ctrl-p cycle through names
+	ctrl-r=:evaluate and insert value
+
+v: visual mode (select stuff)
+	d	delete		- cut	selection
+	D	delete on line	- cut	line and let new line remain
+	dd	delete line	- cut	line and new line
+	y	yank		- copy	selection and character after cursor
+	Y	yank line	- copy line
+	p	paste after	- paste after cursor
+	P	paste before	- paste before cursor
+	C	delete on line	- cut line and let new line remain, then enter insert mode
+	cc	delete on line	- cut line and let new line remain with indent, then enter insert mode
+
+
+	registers:
+		_		- black hole registry
+		"a		- any registry named a
+
+OTHER:
+	ctrl-V + shift i		- insert on multiline
+	:set guifont=Courier:h12	- set font to Courier 12
+
+MACROS:
+	NORMAL MODE
+	q	macroname	start recoring a macro registered in <macroname>. end recoridng with q
+	@	macroname	execute macro registered in <macroname>.
+	
+	VISUAL MODE
+	ctrl-r	macroname	paste recorded macro at cursor
+	"macroname p		insert selected text into <macroname>
+
+
+DELETE swp files:
+	rm ~/.local/share/nvim/swap/*
