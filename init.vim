@@ -51,8 +51,6 @@ map <leader>fu a t(-_-t)<Esc>8h
 " search in artsy files
 map <leader>faa :! grep -r "artsy" -e ""<left>
 map <leader>fah :! grep -r "./" -e ""<left>
-" move cursor to top of screen
-map <leader>j 20j20k
 " wrap word in space
 map <leader>fw i <Esc>2wi <Esc>
 " break function call to new line
