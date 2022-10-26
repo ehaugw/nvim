@@ -179,7 +179,7 @@ endif
 " END OF LET NERD TREE IGNORE .pyc
 
 " LOAD COC MODULES
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua', 'coc-sh']
 
 " SET COC KEYBINDINGS
 nmap <silent> gd <Plug>(coc-definition)
