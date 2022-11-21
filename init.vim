@@ -136,10 +136,6 @@ let g:UltiSnipsUsePythonVersion = 3
 nmap <leader>ya <Plug>(trimmer-mapping)
 " END OF CONFIGURE PYTHON FUNCTION EXPANDER
 
-" CONFIGURE DEOPLETE
-let g:deoplete#enable_at_startup = 1
-" END OF CONFIGURE DEOPLETE
-
 " CONFIGURE NERDCOMMENTER
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -188,7 +184,8 @@ nmap <leader>le :<C-u>CocList diagnostics<cr>
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 let g:coc_disable_startup_warning=1
-" END OF SET COC KEYBINDINGS
+
+inoremap <silent><expr> <c-space> coc#_select_confirm()
 
 
 " #################### READMEs ####################
