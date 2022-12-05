@@ -1,6 +1,12 @@
 all:
 	sudo apt-get update
+	# if this fails
+	# https://askubuntu.com/questions/1402336/apt-trying-to-fetch-versions-not-available-in-archive-ubuntu-com-ubuntu-pool-mai
+	
 	sudo apt-get upgrade
+	# if this fails
+	# https://askubuntu.com/questions/1305141/failed-to-fetch-security-undetermined-error-ip-91-189-91-38-80-in-ubuntu-20-0
+	
 	sudo apt install neovim
 	sudo apt install python3-pip
 	sudo apt install python3.8-venv
