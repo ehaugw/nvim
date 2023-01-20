@@ -4,7 +4,12 @@ let g:python3_host_prog="/usr/bin/python3"
 
 " clear space function before setting to leader
 nnoremap <SPACE> <Nop>
+inoremap <Esc> <Nop>
 let mapleader=" "
+nmap åå [[
+nmap ææ ]]
+nmap Å {
+nmap Æ }
 
 " Remove newbie crutches in Command Mode
 " cnoremap <Left> <Nop>
