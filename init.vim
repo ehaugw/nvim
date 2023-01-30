@@ -39,6 +39,7 @@ vnoremap <Up> <Nop>
 """"""""""""""""""""""""""""""""""""""""
 "       NATIVE VIM CONFIGURATIONS      "
 """"""""""""""""""""""""""""""""""""""""
+set splitright
 
 " create a new variable field
 autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }<Esc>7b
