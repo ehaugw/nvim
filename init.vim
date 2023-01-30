@@ -45,7 +45,7 @@ set splitright
 autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }<Esc>7b
 " execute file as script
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
-autocmd FileType lua    map <leader>ef :! lua5.1 %<CR>
+autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
 " create makefile for execute
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
