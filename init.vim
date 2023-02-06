@@ -35,6 +35,8 @@ vnoremap <Left> <Nop>
 vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
+vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
+vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 
 """"""""""""""""""""""""""""""""""""""""
 "       NATIVE VIM CONFIGURATIONS      "
