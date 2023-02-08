@@ -19,3 +19,24 @@ all:
 	git config --global core.email "ehaugw@gmail.com"
 	git config --global core.name "Eivind Haug-Warberg"
 	git config --global core.editor nvim
+win32yank:
+	curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+	unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
+	chmod +x /tmp/win32yank.exe
+	if [ -d /mnt/c/Users/eivind.haug-warberg ]; then \
+		mkdir -p /mnt/c/Users/eivind.haug-warberg/Wsl; \
+		mv /tmp/win32yank.exe /mnt/c/Users/eivind.haug-warberg/Wsl/; \
+		sudo ln -s -f /mnt/c/Users/eivind.haug-warberg/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
+	fi
+	if [ -d /mnt/c/Users/eivind]; then \
+		mkdir -p /mnt/c/Users/eivind/Wsl; \
+		mv /tmp/win32yank.exe /mnt/c/Users/eivind/Wsl/; \
+		sudo ln -s -f /mnt/c/Users/eivind/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
+	fi
+	if [ -d /mnt/c/Users/ehaugw]; then \
+		mkdir -p /mnt/c/Users/ehaugw/Wsl; \
+		mv /tmp/win32yank.exe /mnt/c/Users/ehaugw/Wsl/; \
+		sudo ln -s -f /mnt/c/Users/ehaugw/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
+	fi
+	# [ -e /mnt/c/Users/eivind ] && mkdir -p /mnt/c/Users/eivind/Wsl && mv /tmp/win32yank.exe /mnt/c/Users/eivind/Wsl/
+	# [ -e /mnt/c/Users/ehaugw ] && mkdir -p /mnt/c/Users/ehaugw/Wsl && mv /tmp/win32yank.exe /mnt/c/Users/ehaugw/Wsl/
