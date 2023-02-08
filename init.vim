@@ -103,9 +103,24 @@ syntax on
 set showmatch                                                               " show matching paranthes
 set number                                                                  " show line numbers
 set cc=120                                                                  " show end of 80 characters
-set mouse=                                                                  " enable mouse interactions in vim
+" set mouse=                                                                  " enable mouse interactions in vim
 " this requires win32yank
-set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
+" set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
+" requires alias to be set in bashrc
+let g:clipboard = {
+            \   'name': 'win32yank-wsl',
+            \   'copy': {
+            \      '+': 'win32yank -i --crlf',
+            \      '*': 'win32yank -i --crlf',
+            \    },
+            \   'paste': {
+            \      '+': 'win32yank -o --lf',
+            \      '*': 'win32yank -o --lf',
+            \   },
+            \   'cache_enabled': 0,
+            \ }
+
+
 syntax enable
 set fileformat=unix
 
