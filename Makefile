@@ -28,15 +28,11 @@ win32yank:
 		mv /tmp/win32yank.exe /mnt/c/Users/eivind.haug-warberg/Wsl/; \
 		sudo ln -s -f /mnt/c/Users/eivind.haug-warberg/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
 	fi
-	if [ -d /mnt/c/Users/eivind]; then \
-		mkdir -p /mnt/c/Users/eivind/Wsl; \
-		mv /tmp/win32yank.exe /mnt/c/Users/eivind/Wsl/; \
-		sudo ln -s -f /mnt/c/Users/eivind/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
+	if [ -d /mnt/c/Users/eivind ]; then \
+		sudo mv /tmp/win32yank.exe /usr/local/bin/win32yank ; \
 	fi
-	if [ -d /mnt/c/Users/ehaugw]; then \
+	if [ -d /mnt/c/Users/ehaugw ]; then \
 		mkdir -p /mnt/c/Users/ehaugw/Wsl; \
 		mv /tmp/win32yank.exe /mnt/c/Users/ehaugw/Wsl/; \
 		sudo ln -s -f /mnt/c/Users/ehaugw/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
 	fi
-	# [ -e /mnt/c/Users/eivind ] && mkdir -p /mnt/c/Users/eivind/Wsl && mv /tmp/win32yank.exe /mnt/c/Users/eivind/Wsl/
-	# [ -e /mnt/c/Users/ehaugw ] && mkdir -p /mnt/c/Users/ehaugw/Wsl && mv /tmp/win32yank.exe /mnt/c/Users/ehaugw/Wsl/
