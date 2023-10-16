@@ -58,7 +58,7 @@ autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'co
 " SET leader to JK
 inoremap <special> jk <ESC>
 " CUSTOM VANILLA KEY BINDINGS
-map <leader>fu a t(-_-t)<Esc>8h
+nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
 map <leader>faa :! grep -r "artsy" -e ""<left>
 map <leader>fah :! grep -r "./" -e ""<left>
