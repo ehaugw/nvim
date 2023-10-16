@@ -2,10 +2,14 @@ set encoding=utf-8
 " let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
-" clear space function before setting to leader
-nnoremap <SPACE> <Nop>
+" Use jk to exit normal node
 inoremap <Esc> <Nop>
+inoremap <special> jk <ESC>
+
+" rebind leader to space
+nnoremap <SPACE> <Nop>
 let mapleader=" "
+
 nmap åå [[
 nmap ææ ]]
 nmap Å {
@@ -23,20 +27,22 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 inoremap <Up> <Nop>
 
-" " Remove newbie crutches in Normal Mode
+" Remove newbie crutches in Normal Mode
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 
-" " Remove newbie crutches in Visual Mode
+" Remove newbie crutches in Visual Mode
 vnoremap <Down> <Nop>
 vnoremap <Left> <Nop>
 vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
+" Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
 vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
+
 
 """"""""""""""""""""""""""""""""""""""""
 "       NATIVE VIM CONFIGURATIONS      "
@@ -55,18 +61,16 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 " create makefile for execute
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
-" SET leader to JK
-inoremap <special> jk <ESC>
 " CUSTOM VANILLA KEY BINDINGS
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
-map <leader>faa :! grep -r "artsy" -e ""<left>
 map <leader>fah :! grep -r "./" -e ""<left>
+
+" FORMATTING KEYBINDIGNS
 " wrap word in space
-map <leader>fw i <Esc>2wi <Esc>
+nnoremap <leader>fw lbi <Esc>2wi <Esc>
 " break function call to new line
-" map <leader>fl i<CR><Esc>$i<CR><Esc>kk$
-map <leader>fl li<CR><Esc>k$%i<CR><Esc>kk$
+nnoremap <leader>fl %%a<CR><Esc>k$%i<CR><Esc>%
 " delete trailing
 map <leader>dtw :%s/\s\+$//gce<CR>
 " wrap all operators
@@ -75,6 +79,7 @@ map <leader>wao :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)
 map <leader>dab :! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi<CR>
 " convert CamelCase to snake_case
 map <leader>c2s :%s/\<\u\|\l\u/\= join(split(tolower(submatch(0)), '\zs'), '_')/gc
+" open outward log file
 map <leader>ool :tabnew /mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Outward/Outward_Defed/BepInEx/LogOutput.log<CR>
 
 " move selection up
@@ -157,11 +162,6 @@ map <leader>q :NERDTreeVCS<CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize=60
 " END OF CONFIGURE NERD TREE
-
-" CONFIGURE PYTHON FUNCTION EXPANDER
-let g:UltiSnipsUsePythonVersion = 3
-nmap <leader>ya <Plug>(trimmer-mapping)
-" END OF CONFIGURE PYTHON FUNCTION EXPANDER
 
 " CONFIGURE NERDCOMMENTER
 " Add spaces after comment delimiters by default
