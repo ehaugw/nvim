@@ -144,6 +144,7 @@ call plug#begin()
     " Plug 'morhetz/gruvbox'                                                  " color scheme 
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
+    Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
 call plug#end()
 
 " CONFIGURE FLAKE 8
