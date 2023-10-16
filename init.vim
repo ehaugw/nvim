@@ -49,6 +49,8 @@ vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""
 set splitright
 
+set updatetime=100
+
 " create a new variable field
 autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }<Esc>7b
 
