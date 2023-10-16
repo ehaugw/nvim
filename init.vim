@@ -136,6 +136,7 @@ syntax enable
 set fileformat=unix
 
 call plug#begin()
+    Plug 'epwalsh/obsidian.nvim'                                            " navigate obisidan vaults
     Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " general autocomplete and goto
     " Plug 'alec-gibson/nvim-tetris'                                          " tetris 
     Plug 'dominikduda/vim_current_word'                                     " underline all occurences of current word
