@@ -10,9 +10,9 @@ inoremap <special> jk <ESC>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nmap åå [[
-nmap ææ ]]
-nmap Å {
+nmap ø [
+nmap æ ]
+nmap Ø {
 nmap Æ }
 
 " Remove newbie crutches in Command Mode
