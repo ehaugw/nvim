@@ -38,3 +38,8 @@ win32yank:
 		mv /tmp/win32yank.exe /mnt/c/Users/ehaugw/Wsl/; \
 		sudo ln -s -f /mnt/c/Users/ehaugw/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
 	fi
+	if [ -d /mnt/c/Users/ehaug ]; then \
+		mkdir -p /mnt/c/Users/ehaug/Wsl; \
+		mv /tmp/win32yank.exe /mnt/c/Users/ehaug/Wsl/; \
+		sudo ln -s -f /mnt/c/Users/ehaug/Wsl/win32yank.exe /usr/local/bin/win32yank ; \
+	fi
