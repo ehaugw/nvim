@@ -223,6 +223,7 @@ let g:coc_global_extensions = ['coc-omnisharp', 'coc-json', 'coc-tsserver', 'coc
 nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>n <Plug>(coc-references)
 nmap <leader>le :<C-u>CocList diagnostics<cr>
+nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 let g:coc_disable_startup_warning=1
