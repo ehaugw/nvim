@@ -69,11 +69,60 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
 " CUSTOM VANILLA KEY BINDINGS
-" Next buffer
-nnoremap gb :bn<cr>
-nnoremap gB :bp<cr>
-nnoremap <tab> :bn<cr>
-nnoremap <s-tab> :bp<cr>
+" Previous unopened buffer
+function! Bprev() abort
+    let start_buffer = bufnr('%')
+    let tries = 0
+    bprevious
+    while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
+        let tries = tries + 1
+        bprevious
+    endwhile
+endfunction
+
+" Previous unopened buffer
+function! Bnext() abort
+    let start_buffer = bufnr('%')
+    let tries = 0
+    bnext
+    while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
+        let tries = tries + 1
+        bnext
+    endwhile
+endfunction
+
+function! Bquit(...) abort
+    if match(bufname('%'), 'NERD_tree_\d') == 0
+        q
+    else
+        let force = (a:0 > 0 ? a:1 : 0) || (&ma == 0)
+        if &mod == 1 && force == 0
+            echom('No write since last change')
+        else
+            let buffer_to_be_closed = bufnr('%')
+            call Bprev()
+            if len(win_findbuf(bufnr(buffer_to_be_closed))) > 0
+                enew
+            end
+            if len(win_findbuf(bufnr(buffer_to_be_closed))) > 0
+                echo("No remaining buffers")
+            else
+                if force == 1
+                    exec "bd!" . buffer_to_be_closed
+                else
+                    exec "bd" . buffer_to_be_closed
+                endif
+            endif
+        endif
+    endif
+endfunction
+
+nnoremap <silent> <tab> :call Bnext()<CR>
+nnoremap <silent> <s-tab> :call Bprev()<CR>
+"
+" Keybindings to close buffer in window
+nnoremap <silent> <leader>q :call Bquit()<cr>
+nnoremap <silent> <leader>QQ :call Bquit(1)<cr>
 
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
@@ -159,8 +208,8 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
     Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
-    Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
-    Plug 'moll/vim-bbye'                                                    " close buffers without closing window
+    " Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
+    " Plug 'vim-ctrlspace/vim-ctrlspace'                                      " buffer list internal to tabs
 call plug#end()
 
 " CONFIGURE GITGUTTER
@@ -188,9 +237,6 @@ map <leader>pd :Pydocstring<CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize=44
 " END OF CONFIGURE NERD TREE
-
-" CONFIGURE vim-bbye
-nnoremap <leader>q :Bd<cr>
 
 " CONFIGURE NERDCOMMENTER
 " Add spaces after comment delimiters by default
