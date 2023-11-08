@@ -48,6 +48,10 @@ vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""
 "       NATIVE VIM CONFIGURATIONS      "
 """"""""""""""""""""""""""""""""""""""""
+
+" create new terminal on bottom
+:command TERM :below 20 sp term://bash
+:command TTERM :tabnew term://bash
 set splitright
 
 set updatetime=100
