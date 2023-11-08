@@ -176,9 +176,9 @@ map <leader>pd :Pydocstring<CR>
 " END OF CONFIGURE PYDOCSTRING
 
 " CONFIGURE NERD TREE
-map <leader>q :NERDTreeVCS<CR>
+:command NT   :NERDTreeVCS<CR>
 let g:NERDTreeWinPos = "right"
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=44
 " END OF CONFIGURE NERD TREE
 
 " CONFIGURE NERDCOMMENTER
