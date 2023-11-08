@@ -69,6 +69,12 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
 " CUSTOM VANILLA KEY BINDINGS
+" Next buffer
+nnoremap gb :bn<cr>
+nnoremap gB :bp<cr>
+nnoremap <tab> :bn<cr>
+nnoremap <s-tab> :bp<cr>
+
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
 map <leader>fah :! grep -r "./" -e ""<left>
@@ -153,6 +159,8 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
     Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
+    Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
+    Plug 'moll/vim-bbye'                                                    " close buffers without closing window
 call plug#end()
 
 " CONFIGURE GITGUTTER
@@ -180,6 +188,9 @@ map <leader>pd :Pydocstring<CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize=44
 " END OF CONFIGURE NERD TREE
+
+" CONFIGURE vim-bbye
+nnoremap <leader>q :Bd<cr>
 
 " CONFIGURE NERDCOMMENTER
 " Add spaces after comment delimiters by default
