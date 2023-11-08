@@ -5,6 +5,7 @@ let g:python3_host_prog="/usr/bin/python3"
 " Use jk to exit normal node
 inoremap <Esc> <Nop>
 inoremap <special> jk <ESC>
+tnoremap <Esc> <C-\><C-n>
 
 " rebind leader to space
 nnoremap <SPACE> <Nop>
