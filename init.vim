@@ -286,6 +286,19 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>n <Plug>(coc-references)
 nmap <leader>le :<C-u>CocList diagnostics<cr>
 nmap <leader>rn <Plug>(coc-rename)
+" USE K TO SHOW DOCUMENTATION USING COC WHEN POSSIBLE
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" END OF USE K TO SHOW DOCUMENTATION USING COC WHEN POSSIBLE
+
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 let g:coc_disable_startup_warning=1
