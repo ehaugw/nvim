@@ -172,7 +172,7 @@ autocmd FileType python let python_highlight_all = 1
 syntax on
 
 set showmatch                                                               " show matching paranthes
-set number                                                                  " show line numbers
+set nu rnu                                                                  " show line numbers
 set cc=120                                                                  " show end of 80 characters
 " set mouse=                                                                  " enable mouse interactions in vim
 " this requires win32yank
