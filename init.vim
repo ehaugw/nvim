@@ -71,24 +71,38 @@ autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'co
 " CUSTOM VANILLA KEY BINDINGS
 " Previous unopened buffer
 function! Bprev() abort
-    let start_buffer = bufnr('%')
-    let tries = 0
-    bprevious
-    while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
-        let tries = tries + 1
+    if match(bufname('%'), 'NERD_tree_\d') == 0
+        echom('Tabbing out of NERDTree has been disabled')
+    else
+        let start_buffer = bufnr('%')
+        let tries = 0
         bprevious
-    endwhile
+        while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
+            let tries = tries + 1
+            bprevious
+        endwhile
+        if bufnr('%') == start_buffer
+            echom('No other unopened buffers')
+        endif
+    endif
 endfunction
 
 " Previous unopened buffer
 function! Bnext() abort
-    let start_buffer = bufnr('%')
-    let tries = 0
-    bnext
-    while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
-        let tries = tries + 1
+    if match(bufname('%'), 'NERD_tree_\d') == 0
+        echom('Tabbing out of NERDTree has been disabled')
+    else
+        let start_buffer = bufnr('%')
+        let tries = 0
         bnext
-    endwhile
+        while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
+            let tries = tries + 1
+            bnext
+        endwhile
+        if bufnr('%') == start_buffer
+            echom('No other unopened buffers')
+        endif
+    endif
 endfunction
 
 function! Bquit(...) abort
