@@ -49,6 +49,25 @@ vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 "       NATIVE VIM CONFIGURATIONS      "
 """"""""""""""""""""""""""""""""""""""""
 
+" Align on = delimiter
+nnoremap <leader>== :%! sed "s/ \+= \+/=/g" \| column -t -s "=" -o " = "<cr>
+vnoremap <leader>== :'<,'>! sed "s/ \+= \+/=/g" \| column -t -s "=" -o " = "<cr>
+nnoremap <leader>=d= :%! sed "s/ \+= \+/=/g"<cr>
+vnoremap <leader>=d= :'<,'>! sed "s/ \+= \+/=/g"<cr>
+
+" Align on ; delimiter
+nnoremap <leader>=; :%! sed "s/ \+; \+/;/g" \| column -t -s ";" -o " ; "<cr>
+vnoremap <leader>=; :'<,'>! sed "s/ \+; \+/;/g" \| column -t -s ";" -o " ; "<cr>
+nnoremap <leader>=d; :%! sed "s/ \+; \+/;/g"<cr>
+vnoremap <leader>=d; :'<,'>! sed "s/ \+; \+/;/g"<cr>
+
+" Align on : delimiter
+nnoremap <leader>=: :%! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
+vnoremap <leader>=: :'<,'>! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
+nnoremap <leader>=d: :%! sed "s/ \+: \+/:/g"<cr>
+vnoremap <leader>=d: :'<,'>! sed "s/ \+: \+/:/g"<cr>
+
+
 " create new terminal on bottom
 :command TERM :below 20 sp term://bash
 :command TTERM :tabnew term://bash
