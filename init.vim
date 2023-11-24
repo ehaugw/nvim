@@ -142,9 +142,7 @@ function! Bquit(...) abort
             if len(win_findbuf(bufnr(buffer_to_be_closed))) > 0
                 enew
             end
-            if len(win_findbuf(bufnr(buffer_to_be_closed))) > 0
-                echo("No remaining buffers")
-            else
+            if len(win_findbuf(bufnr(buffer_to_be_closed))) == 0
                 if force == 1
                     exec "bd!" . buffer_to_be_closed
                 else
