@@ -71,6 +71,11 @@ vnoremap <leader>=d: :'<,'>! sed "s/ \+: \+/:/g"<cr>
 " create new terminal on bottom
 :command TERM :below 20 sp term://bash
 :command TTERM :tabnew term://bash
+
+" Open vimrcs
+:command VIMRC :e ~/.config/nvim/init.vim
+:command VIMRCLOCAL :e ~/.config/nvim/init.vim.local
+
 set splitright
 
 set updatetime=100
