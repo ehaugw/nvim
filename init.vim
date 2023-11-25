@@ -177,8 +177,6 @@ map <leader>wao :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)
 map <leader>dab :! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi<CR>
 " convert CamelCase to snake_case
 map <leader>c2s :%s/\<\u\|\l\u/\= join(split(tolower(submatch(0)), '\zs'), '_')/gc
-" open outward log file
-map <leader>ool :tabnew /mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Outward/Outward_Defed/BepInEx/LogOutput.log<CR>
 
 " move selection up
 vnoremap J :m '>+1<CR>gv=gv
