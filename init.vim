@@ -50,28 +50,28 @@ vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 """"""""""""""""""""""""""""""""""""""""
 
 " Align on = delimiter
-nnoremap <leader>== :%! sed "s/ \+= \+/=/g" \| column -t -s "=" -o " = "<cr>
-vnoremap <leader>== :'<,'>! sed "s/ \+= \+/=/g" \| column -t -s "=" -o " = "<cr>
-nnoremap <leader>=d= :%! sed "s/ \+= \+/=/g"<cr>
-vnoremap <leader>=d= :'<,'>! sed "s/ \+= \+/=/g"<cr>
+nnoremap <leader>== :%! sed "s/ *= */=/g" \| column -t -s "=" -o " = "<cr>
+vnoremap <leader>== :'<,'>! sed "s/ *= */=/g" \| column -t -s "=" -o " = "<cr>
+nnoremap <leader>=d= :%! sed "s/ *= */=/g"<cr>
+vnoremap <leader>=d= :'<,'>! sed "s/ *= */=/g"<cr>
 
 " Align on ; delimiter
-nnoremap <leader>=; :%! sed "s/ \+; \+/;/g" \| column -t -s ";" -o " ; "<cr>
-vnoremap <leader>=; :'<,'>! sed "s/ \+; \+/;/g" \| column -t -s ";" -o " ; "<cr>
-nnoremap <leader>=d; :%! sed "s/ \+; \+/;/g"<cr>
-vnoremap <leader>=d; :'<,'>! sed "s/ \+; \+/;/g"<cr>
+nnoremap <leader>=; :%! sed "s/ *; */;/g" \| column -t -s ";" -o " ; "<cr>
+vnoremap <leader>=; :'<,'>! sed "s/ *; */;/g" \| column -t -s ";" -o " ; "<cr>
+nnoremap <leader>=d; :%! sed "s/ *; */;/g"<cr>
+vnoremap <leader>=d; :'<,'>! sed "s/ *; */;/g"<cr>
 
 " Align on | delimiter
-nnoremap <leader>=\| :%! sed "s/ \+\| \+/\|/g" \| column -t -s "\|" -o " \| "<cr>
-vnoremap <leader>=\| :'<,'>! sed "s/ \+\| \+/\|/g" \| column -t -s "\|" -o " \| "<cr>
-nnoremap <leader>=d\| :%! sed "s/ \+\| \+/\|/g"<cr>
-vnoremap <leader>=d\| :'<,'>! sed "s/ \+\| \+/\|/g"<cr>
+nnoremap <leader>=\| :%! sed "s/ *\| */\|/g" \| column -t -s "\|" -o " \| "<cr>
+vnoremap <leader>=\| :'<,'>! sed "s/ *\| */\|/g" \| column -t -s "\|" -o " \| "<cr>
+nnoremap <leader>=d\| :%! sed "s/ *\| */\|/g"<cr>
+vnoremap <leader>=d\| :'<,'>! sed "s/ *\| */\|/g"<cr>
 
 " Align on : delimiter
-nnoremap <leader>=: :%! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
-vnoremap <leader>=: :'<,'>! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
-nnoremap <leader>=d: :%! sed "s/ \+: \+/:/g"<cr>
-vnoremap <leader>=d: :'<,'>! sed "s/ \+: \+/:/g"<cr>
+nnoremap <leader>=: :%! sed "s/ *: */:/g" \| column -t -s ":" -o " : "<cr>
+vnoremap <leader>=: :'<,'>! sed "s/ *: */:/g" \| column -t -s ":" -o " : "<cr>
+nnoremap <leader>=d: :%! sed "s/ *: */:/g"<cr>
+vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 
 
 " create new terminal on bottom
