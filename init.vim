@@ -61,6 +61,12 @@ vnoremap <leader>=; :'<,'>! sed "s/ \+; \+/;/g" \| column -t -s ";" -o " ; "<cr>
 nnoremap <leader>=d; :%! sed "s/ \+; \+/;/g"<cr>
 vnoremap <leader>=d; :'<,'>! sed "s/ \+; \+/;/g"<cr>
 
+" Align on | delimiter
+nnoremap <leader>=\| :%! sed "s/ \+\| \+/\|/g" \| column -t -s "\|" -o " \| "<cr>
+vnoremap <leader>=\| :'<,'>! sed "s/ \+\| \+/\|/g" \| column -t -s "\|" -o " \| "<cr>
+nnoremap <leader>=d\| :%! sed "s/ \+\| \+/\|/g"<cr>
+vnoremap <leader>=d\| :'<,'>! sed "s/ \+\| \+/\|/g"<cr>
+
 " Align on : delimiter
 nnoremap <leader>=: :%! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
 vnoremap <leader>=: :'<,'>! sed "s/ \+: \+/:/g" \| column -t -s ":" -o " : "<cr>
