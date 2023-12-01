@@ -90,6 +90,7 @@ autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
 " Open rcs
 :command VIMRC :e ~/.config/nvim/init.vim
 :command VIMRCLOCAL :e ~/.config/nvim/init.vim.local
+:command BASHRC :e ~/.bashrc
 :command LOAD :source Session.vim
 :command SAVE :mksession!
 :command SAVEQ :mksession! | qa
