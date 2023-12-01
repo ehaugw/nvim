@@ -79,6 +79,9 @@ vnoremap <leader>=: :'<,'>! sed "s/ *: */:/g" \| column -t -s ":" -o " : "<cr>
 nnoremap <leader>=d: :%! sed "s/ *: */:/g"<cr>
 vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 
+" delete comment on same line
+autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
+autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
 
 " create new terminal on bottom
 :command TERM :below 20 sp term://bash
