@@ -87,9 +87,13 @@ autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
 :command TERM :below 20 sp term://bash
 :command TTERM :tabnew term://bash
 
-" Open vimrcs
+" Open rcs
 :command VIMRC :e ~/.config/nvim/init.vim
 :command VIMRCLOCAL :e ~/.config/nvim/init.vim.local
+:command LOAD :source Session.vim
+:command SAVE :mksession!
+:command SAVEQ :mksession! | qa
+
 
 set splitright
 
