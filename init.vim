@@ -133,73 +133,6 @@ nnoremap <leader>col :COLLAPSE<cr>
 :command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
 :command RELOAD :source $MYVIMRC 
 
-" Previous unopened buffer
-function! Bprev() abort
-    if match(bufname('%'), 'NERD_tree_\d') == 0
-        echom('Tabbing out of NERDTree has been disabled')
-    else
-        let start_buffer = bufnr('%')
-        let tries = 0
-        bprevious
-        while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
-            let tries = tries + 1
-            bprevious
-        endwhile
-        if bufnr('%') == start_buffer
-            echom('No other unopened buffers')
-        endif
-    endif
-endfunction
-
-" Previous unopened buffer
-function! Bnext() abort
-    if match(bufname('%'), 'NERD_tree_\d') == 0
-        echom('Tabbing out of NERDTree has been disabled')
-    else
-        let start_buffer = bufnr('%')
-        let tries = 0
-        bnext
-        while len(win_findbuf(bufnr('%'))) > 1 && tries < 999 && bufnr('%') != start_buffer
-            let tries = tries + 1
-            bnext
-        endwhile
-        if bufnr('%') == start_buffer
-            echom('No other unopened buffers')
-        endif
-    endif
-endfunction
-
-function! Bquit(...) abort
-    if match(bufname('%'), 'NERD_tree_\d') == 0
-        q
-    else
-        let force = (a:0 > 0 ? a:1 : 0) || (&ma == 0)
-        if &mod == 1 && force == 0
-            echom('No write since last change')
-        else
-            let buffer_to_be_closed = bufnr('%')
-            call Bprev()
-            if len(win_findbuf(bufnr(buffer_to_be_closed))) > 0
-                enew
-            end
-            if len(win_findbuf(bufnr(buffer_to_be_closed))) == 0
-                if force == 1
-                    exec "bd!" . buffer_to_be_closed
-                else
-                    exec "bd" . buffer_to_be_closed
-                endif
-            endif
-        endif
-    endif
-endfunction
-
-nnoremap <silent> <tab> :call Bnext()<CR>
-nnoremap <silent> <s-tab> :call Bprev()<CR>
-"
-" Keybindings to close buffer in window
-nnoremap <silent> <leader>q :call Bquit()<cr>
-nnoremap <silent> <leader>QQ :call Bquit(1)<cr>
-
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
 map <leader>fah :! grep -r "./" -e ""<left>
@@ -285,6 +218,7 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
     " Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
     " Plug 'vim-ctrlspace/vim-ctrlspace'                                      " buffer list internal to tabs
+    Plug 'ehaugw/BoundBuffers'                                              " better buffer management
 call plug#end()
 
 " CONFIGURE GITGUTTER
