@@ -130,7 +130,7 @@ endfunction
 :command COLLAPSE :call Collapse()
 nnoremap <leader>col :COLLAPSE<cr>
 
-:command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g"
+:command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
 :command RELOAD :source $MYVIMRC 
 
 " Previous unopened buffer
