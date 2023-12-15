@@ -117,6 +117,22 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
 " CUSTOM VANILLA KEY BINDINGS
+function! Collapse() abort
+    let startline = line(".")
+    execute "norm %"
+    while line(".") == startline
+        execute "norm Jx%"
+    endwhile
+    while line(".") != startline
+        execute "norm kJxh"
+    endwhile
+endfunction
+:command COLLAPSE :call Collapse()
+nnoremap <leader>col :COLLAPSE<cr>
+
+:command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g"
+:command RELOAD :source $MYVIMRC 
+
 " Previous unopened buffer
 function! Bprev() abort
     if match(bufname('%'), 'NERD_tree_\d') == 0
