@@ -11,6 +11,8 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+nnoremap ÅÅ :keeppatterns ?^\(def\s\S\|class\s\S\)<cr>
+nnoremap åå :keeppatterns /^\(def\s\S\|class\s\S\)<cr>
 nmap ø [
 nmap æ ]
 nmap Ø {
