@@ -210,7 +210,8 @@ nnoremap <leader>fw lbi <Esc>2wi <Esc>
 " break function call to new line
 nnoremap <leader>fl %%a<CR><Esc>k$%i<CR><Esc>%
 " delete trailing
-map <leader>dtw :%s/\s\+$//gce<CR>
+nnoremap <leader>dtw :%s/\s\+$//gce<CR>
+vnoremap <leader>dtw :s/\s\+$//g<cr>
 " wrap all operators
 map <leader>wao :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)/\1 \3 \5/gce<CR>
 " delete swap files
