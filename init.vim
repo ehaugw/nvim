@@ -95,6 +95,10 @@ autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
 :command SAVE :NERDTreeVCS | q | mksession!
 :command SAVEQ :mksession! | qa
 
+:command Qa :qa
+:command Q :q
+:command W :w
+:command Wq :wq
 
 set splitright
 
