@@ -166,7 +166,7 @@ set autoindent
 set hlsearch ic
 
 "AUTO COMPLETE
-set wildmode=longest,list
+set wildmode=full:lastused
 
 "AUTO INCREMENT NUMBERS (increase: ctrl-a | decrease: ctrl-x)
 :set nrformats+=alpha
