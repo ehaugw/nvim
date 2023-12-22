@@ -1,4 +1,5 @@
 all:
+	sudo add-apt-repository ppa:deadsnakes/ppa
 	sudo apt-get update
 	# if this fails
 	# confirm that you are using WSL1
