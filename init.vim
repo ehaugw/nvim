@@ -2,8 +2,6 @@ set encoding=utf-8
 " let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
-" Use jk to exit normal node
-inoremap <Esc> <Nop>
 inoremap <special> jk <ESC>
 tnoremap <Esc> <C-\><C-n>
 
@@ -17,30 +15,6 @@ nmap ø [
 nmap æ ]
 nmap Ø {
 nmap Æ }
-
-" Remove newbie crutches in Command Mode
-" cnoremap <Left> <Nop>
-" cnoremap <Down> <Nop>
-" cnoremap <Right> <Nop>
-" cnoremap <Up> <Nop>
-
-" Remove newbie crutches in Insert Mode
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-inoremap <Up> <Nop>
-
-" Remove newbie crutches in Normal Mode
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-
-" Remove newbie crutches in Visual Mode
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-vnoremap <Up> <Nop>
 
 " Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
@@ -184,7 +158,6 @@ syntax on
 set showmatch                                                               " show matching paranthes
 set nu rnu                                                                  " show line numbers
 set cc=120                                                                  " show end of 80 characters
-" set mouse=                                                                  " enable mouse interactions in vim
 " this requires win32yank
 " set clipboard=unnamedplus                                                   " yank to clipboard - doesn't work with block paste
 " requires alias to be set in bashrc
@@ -221,6 +194,7 @@ call plug#begin()
     " Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
     " Plug 'vim-ctrlspace/vim-ctrlspace'                                      " buffer list internal to tabs
     Plug 'ehaugw/BoundBuffers'                                              " better buffer management
+    Plug 'ehaugw/RemoveCrutches'                                            " better buffer management
 call plug#end()
 
 " CONFIGURE GITGUTTER
