@@ -201,7 +201,6 @@ call plug#begin()
     Plug 'scrooloose/nerdtree'                                              " file tree browser
     Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
     Plug 'ehaugw/BoundBuffers'                                              " better buffer management
-    Plug 'ehaugw/RemoveCrutches'                                            " better buffer management
 call plug#end()
 
 " CONFIGURE GITGUTTER
@@ -302,4 +301,5 @@ if filereadable(localvimfile)
     exec "source " . localvimfile
 endif
 autocmd BufEnter *.vim.local :setlocal filetype=vim
+call SecondaryConfig('remove_crutches.vim')
 
