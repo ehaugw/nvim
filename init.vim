@@ -213,30 +213,6 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize=44
 " END OF CONFIGURE NERD TREE
 
-" CONFIGURE NERDCOMMENTER
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-" let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
-map <leader>kc :call nerdcommenter#Comment(0,"comment")<CR>
-map <leader>ku :call nerdcommenter#Comment(0,"uncomment")<CR>
-map <leader>kt :call nerdcommenter#Comment(0,"toggle")<CR>
-" END OF CONFIGURE NERDCOMMENTER
-
 " SET COLOR THEME USING ZENBURN OR SOLARIZED
 if has('gui_running')
     set background=dark
@@ -262,3 +238,4 @@ autocmd BufEnter *.vim.local :setlocal filetype=vim
 call SecondaryConfig('remove_crutches.vim')
 call SecondaryConfig('coc.vim')
 call SecondaryConfig('win32yank.vim')
+call SecondaryConfig('nerdcommenter.vim')
