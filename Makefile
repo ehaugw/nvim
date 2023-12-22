@@ -1,4 +1,5 @@
 all:
+	sudo apt install curl
 	sudo add-apt-repository ppa:deadsnakes/ppa
 	sudo apt-get update
 	# if this fails
