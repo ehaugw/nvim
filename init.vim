@@ -23,7 +23,7 @@ function! Collapse() abort
     endwhile
     execute "norm %"
 endfunction
-:command COLLAPSE :call Collapse()
+:command! COLLAPSE :call Collapse()
 nnoremap <leader>col :COLLAPSE<cr>
 
 inoremap <special> jk <ESC>
@@ -85,21 +85,19 @@ autocmd FileType vim vnoremap <leader>kd :!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 
 " create new terminal on bottom
-:command TERM :below 20 sp term://bash
-:command TTERM :tabnew term://bash
+:command! TERM :below 20 sp term://bash
+:command! TTERM :tabnew term://bash
+:command! VIMRC :e $MYVIMRC
+:command! VIMRCLOCAL :e $MYVIMRC.local
+:command! BASHRC :e ~/.bashrc
+:command! LOAD :source Session.vim
+:command! SAVE :NERDTreeVCS | q | mksession!
+:command! SAVEQ :mksession! | qa
 
-" Open rcs
-:command VIMRC :e $MYVIMRC
-:command VIMRCLOCAL :e $MYVIMRC.local
-:command BASHRC :e ~/.bashrc
-:command LOAD :source Session.vim
-:command SAVE :NERDTreeVCS | q | mksession!
-:command SAVEQ :mksession! | qa
-
-:command Qa :qa
-:command Q :q
-:command W :w
-:command Wq :wq
+:command! Qa :qa
+:command! Q :q
+:command! W :w
+:command! Wq :wq
 
 " execute file as script
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
@@ -111,7 +109,7 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
 :command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
-command RELOAD :source $MYVIMRC
+:command! RELOAD :source $MYVIMRC
 
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
@@ -128,7 +126,7 @@ vnoremap <leader>dtw :s/\s\+$//g<cr>
 " wrap all operators
 map <leader>wao :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)/\1 \3 \5/gce<CR>
 " delete swap files
-:command DAB ! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi
+:command! DAB ! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi
 " convert CamelCase to snake_case
 map <leader>c2s :%s/\<\u\|\l\u/\= join(split(tolower(submatch(0)), '\zs'), '_')/gc
 

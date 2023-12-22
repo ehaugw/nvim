@@ -1,4 +1,4 @@
-:command NT   :NERDTreeVCS<CR>
+:command! NT   :NERDTreeVCS<CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize=44
 
