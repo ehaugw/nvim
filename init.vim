@@ -200,8 +200,6 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
     Plug 'airblade/vim-gitgutter'                                           " integrate git into nvim
-    " Plug 'dosimple/workspace.vim'                                           " buffer list internal to tabs
-    " Plug 'vim-ctrlspace/vim-ctrlspace'                                      " buffer list internal to tabs
     Plug 'ehaugw/BoundBuffers'                                              " better buffer management
     Plug 'ehaugw/RemoveCrutches'                                            " better buffer management
 call plug#end()
