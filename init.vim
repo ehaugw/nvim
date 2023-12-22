@@ -179,7 +179,6 @@ call plug#begin()
     Plug 'vim-scripts/indentpython.vim'                                     " auto indentation
     Plug 'nvie/vim-flake8'                                                  " linting tool
     Plug 'jnurmine/Zenburn'                                                 " color scheme
-    Plug 'altercation/vim-colors-solarized'                                 " color scheme
     " Plug 'morhetz/gruvbox'                                                  " color scheme 
     Plug 'preservim/nerdcommenter'                                          " comment keybindings
     Plug 'scrooloose/nerdtree'                                              " file tree browser
@@ -207,17 +206,11 @@ let g:pydocstring_doq_path ='~/.local/bin/doq'                              " ne
 map <leader>pd :Pydocstring<CR>
 " END OF CONFIGURE PYDOCSTRING
 
-" SET COLOR THEME USING ZENBURN OR SOLARIZED
-if has('gui_running')
-    set background=dark
-    colorscheme solarized
-else
-    colorscheme zenburn
-    highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-    highlight clear SignColumn
-    " colorscheme gruvbox
-endif
-" END OF SET COLOR THEME
+" SET ZENBURN
+colorscheme zenburn
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+highlight clear SignColumn
+" END OF SET ZENBURN
 
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
