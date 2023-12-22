@@ -296,10 +296,7 @@ let g:coc_disable_startup_warning=1
 
 inoremap <silent><expr> <c-space> coc#_select_confirm()
 
-let localvimfile = expand($MYVIMRC) . '.local'
-if filereadable(localvimfile)
-    exec "source " . localvimfile
-endif
+call SecondaryConfig('init.vim.local')
 autocmd BufEnter *.vim.local :setlocal filetype=vim
 call SecondaryConfig('remove_crutches.vim')
 
