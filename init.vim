@@ -2,12 +2,29 @@ set encoding=utf-8
 " let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
+" easily load secondary configs if they exist
 function! SecondaryConfig(...) abort
     let filename = fnamemodify($MYVIMRC, ':h') . '/' . a:1
     if filereadable(filename)
         exec "source " . filename
     endif
 endfunction
+
+autocmd BufEnter *.vim.local :setlocal filetype=vim
+
+function! Collapse() abort
+    let startline = line(".")
+    execute "norm %"
+    " while line(".") == startline
+    "     execute "norm J%"
+    " endwhile
+    while line(".") != startline
+        execute "norm kJ"
+    endwhile
+    execute "norm %"
+endfunction
+:command COLLAPSE :call Collapse()
+nnoremap <leader>col :COLLAPSE<cr>
 
 inoremap <special> jk <ESC>
 tnoremap <Esc> <C-\><C-n>
@@ -16,8 +33,11 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" got to function / class definitions
 nnoremap ÅÅ :keeppatterns ?^\(def\s\S\|class\s\S\)<cr>
 nnoremap åå :keeppatterns /^\(def\s\S\|class\s\S\)<cr>
+
+" make ø and æ act as the corresponding keys on an american keyboard
 nmap ø [
 nmap æ ]
 nmap Ø {
@@ -26,11 +46,6 @@ nmap Æ }
 " Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
 vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
-
-
-""""""""""""""""""""""""""""""""""""""""
-"       NATIVE VIM CONFIGURATIONS      "
-""""""""""""""""""""""""""""""""""""""""
 
 " Align on = delimiter
 nnoremap <leader>== :%! sed "s/ *= */=/g" \| column -t -s "=" -o " = "<cr>
@@ -64,15 +79,18 @@ vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 
 " delete comment on same line
 autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
-autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
+autocmd FileType python nnoremap <leader>kd :.!sed "s/ *\\#[^\\#]*$//g"<cr>
+
+autocmd FileType vim vnoremap <leader>kd :!sed "s/ *\\\"[^\\\"]*$//g"<cr>
+autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 
 " create new terminal on bottom
 :command TERM :below 20 sp term://bash
 :command TTERM :tabnew term://bash
 
 " Open rcs
-:command VIMRC :e ~/.config/nvim/init.vim
-:command VIMRCLOCAL :e ~/.config/nvim/init.vim.local
+:command VIMRC :e $MYVIMRC
+:command VIMRCLOCAL :e $MYVIMRC.local
 :command BASHRC :e ~/.bashrc
 :command LOAD :source Session.vim
 :command SAVE :NERDTreeVCS | q | mksession!
@@ -83,13 +101,6 @@ autocmd FileType python nnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
 :command W :w
 :command Wq :wq
 
-set splitright
-
-set updatetime=100
-
-" create a new variable field
-autocmd FileType cs     map <leader>prop ccpublic float MyProperty { get; set; }<Esc>7b
-
 " execute file as script
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
@@ -99,23 +110,8 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 " create makefile for execute
 autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
 
-" CUSTOM VANILLA KEY BINDINGS
-function! Collapse() abort
-    let startline = line(".")
-    execute "norm %"
-    " while line(".") == startline
-    "     execute "norm J%"
-    " endwhile
-    while line(".") != startline
-        execute "norm kJ"
-    endwhile
-    execute "norm %"
-endfunction
-:command COLLAPSE :call Collapse()
-nnoremap <leader>col :COLLAPSE<cr>
-
 :command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
-:command RELOAD :source $MYVIMRC 
+command RELOAD :source $MYVIMRC
 
 nnoremap <leader>fu A t(-_-t)<Esc>8h
 " search in artsy files
@@ -146,32 +142,21 @@ set shiftwidth=4                                                            " <<
 set tabstop=4
 set autoindent
 
-"SEARCHING
-set hlsearch ic
-
-"AUTO COMPLETE
+set splitright                                                              " put new split windows on the right side
+set updatetime=100                                                          " save swap and gitgutter every 0.1 second
+set hlsearch ic                                                             " ignore case when searching
 set wildmode=full:lastused
-set wildmenu
-
-"AUTO INCREMENT NUMBERS (increase: ctrl-a | decrease: ctrl-x)
-:set nrformats+=alpha
-
-"FORMATING
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/      " mark trailing white space as bad
-
-"OTHER
+set wildmenu                                                                " better : mode auto complete
+set nrformats+=alpha                                                        " enable c-a c-x for letters
 set cursorline                                                              " will also highlight what you wrote last
 autocmd FileType python let python_highlight_all = 1
-syntax on
-
+syntax on                                                                   " enable syntax coloring
+syntax enable                                                               " do I need both
 set showmatch                                                               " show matching paranthes
 set nu rnu                                                                  " show line numbers
-set cc=120                                                                  " show end of 80 characters
-
-syntax enable
+set cc=120                                                                  " show end of 120 characters
 set fileformat=unix
-
-set signcolumn=yes
+set signcolumn=yes                                                          " show column left to numbers, used by gitgutter
 
 " CONFIGURE FLAKE 8
 " let g:flake8_show_in_file = 1
@@ -179,17 +164,8 @@ let g:flake8_show_in_gutter = 1
 autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " END OF CONFIGURE FLAKE 8
 
-" CONFIGURE PYDOCSTRING
-let g:pydocstring_doq_path ='~/.local/bin/doq'                              " needed for py-docstring
-map <leader>pd :Pydocstring<CR>
-" END OF CONFIGURE PYDOCSTRING
-
-autocmd FileType python set signcolumn=yes
-autocmd FileType lua set signcolumn=yes
-
 call SecondaryConfig('plug.vim')
 call SecondaryConfig('init.vim.local')
-autocmd BufEnter *.vim.local :setlocal filetype=vim
 call SecondaryConfig('remove_crutches.vim')
 call SecondaryConfig('coc.vim')
 call SecondaryConfig('win32yank.vim')
