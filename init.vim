@@ -199,12 +199,6 @@ let g:pydocstring_doq_path ='~/.local/bin/doq'                              " ne
 map <leader>pd :Pydocstring<CR>
 " END OF CONFIGURE PYDOCSTRING
 
-" SET ZENBURN
-colorscheme zenburn
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-highlight clear SignColumn
-" END OF SET ZENBURN
-
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 
@@ -216,3 +210,4 @@ call SecondaryConfig('coc.vim')
 call SecondaryConfig('win32yank.vim')
 call SecondaryConfig('nerdcommenter.vim')
 call SecondaryConfig('nerdtree.vim')
+call SecondaryConfig('zenburn.vim')
