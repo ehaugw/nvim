@@ -186,14 +186,7 @@ call plug#begin()
     Plug 'ehaugw/BoundBuffers'                                              " better buffer management
 call plug#end()
 
-" CONFIGURE GITGUTTER
-" [c previous hunk
-" ]c next hunk
-" <leader>hu undo hunk
-" <leader>hp preview hunk
-" <leader>hs stage hunk
 set signcolumn=yes
-" END OF CONFIGURE GITGUTTER
 
 " CONFIGURE FLAKE 8
 " let g:flake8_show_in_file = 1
