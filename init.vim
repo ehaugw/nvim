@@ -207,12 +207,6 @@ let g:pydocstring_doq_path ='~/.local/bin/doq'                              " ne
 map <leader>pd :Pydocstring<CR>
 " END OF CONFIGURE PYDOCSTRING
 
-" CONFIGURE NERD TREE
-:command NT   :NERDTreeVCS<CR>
-let g:NERDTreeWinPos = "right"
-let g:NERDTreeWinSize=44
-" END OF CONFIGURE NERD TREE
-
 " SET COLOR THEME USING ZENBURN OR SOLARIZED
 if has('gui_running')
     set background=dark
@@ -225,10 +219,6 @@ else
 endif
 " END OF SET COLOR THEME
 
-" LET NERD TREE IGNORE .pyc
-    let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" END OF LET NERD TREE IGNORE .pyc
-
 autocmd FileType python set signcolumn=yes
 autocmd FileType lua set signcolumn=yes
 
@@ -239,3 +229,4 @@ call SecondaryConfig('remove_crutches.vim')
 call SecondaryConfig('coc.vim')
 call SecondaryConfig('win32yank.vim')
 call SecondaryConfig('nerdcommenter.vim')
+call SecondaryConfig('nerdtree.vim')
