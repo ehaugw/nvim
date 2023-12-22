@@ -144,6 +144,7 @@ set hlsearch ic
 
 "AUTO COMPLETE
 set wildmode=full:lastused
+set wildmenu
 
 "AUTO INCREMENT NUMBERS (increase: ctrl-a | decrease: ctrl-x)
 :set nrformats+=alpha
