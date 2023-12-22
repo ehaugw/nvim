@@ -96,12 +96,13 @@ autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'co
 function! Collapse() abort
     let startline = line(".")
     execute "norm %"
-    while line(".") == startline
-        execute "norm Jx%"
-    endwhile
+    " while line(".") == startline
+    "     execute "norm J%"
+    " endwhile
     while line(".") != startline
-        execute "norm kJxh"
+        execute "norm kJ"
     endwhile
+    execute "norm %"
 endfunction
 :command COLLAPSE :call Collapse()
 nnoremap <leader>col :COLLAPSE<cr>
