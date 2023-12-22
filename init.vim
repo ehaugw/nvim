@@ -2,6 +2,13 @@ set encoding=utf-8
 " let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
+function! SecondaryConfig(...) abort
+    let filename = fnamemodify($MYVIMRC, ':h') . '/' . a:1
+    if filereadable(filename)
+        exec "source " . filename
+    endif
+endfunction
+
 inoremap <special> jk <ESC>
 tnoremap <Esc> <C-\><C-n>
 
