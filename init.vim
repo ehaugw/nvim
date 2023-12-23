@@ -112,8 +112,6 @@ autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'co
 :command! RELOAD :source $MYVIMRC
 
 nnoremap <leader>fu A t(-_-t)<Esc>8h
-" search in artsy files
-map <leader>fah :! grep -r "./" -e ""<left>
 
 " FORMATTING KEYBINDIGNS
 " wrap word in space
