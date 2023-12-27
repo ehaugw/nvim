@@ -33,6 +33,22 @@ nmap æ ]
 nmap Ø {
 nmap Æ }
 
+" easier  []{} in insert mode
+function! NoNor() abort
+    imap ø [
+    imap æ ]
+    imap Ø {
+    imap Æ }
+endfunction
+
+function! Nor() abort
+    imap ø ø
+    imap æ æ
+    imap Ø Ø
+    imap Æ Æ
+endfunction
+call NoNor()
+
 " Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
 vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
