@@ -31,8 +31,8 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " got to function / class definitions
-nnoremap ÅÅ :keeppatterns ?^\(def\s\S\|class\s\S\)<cr>
-nnoremap åå :keeppatterns /^\(def\s\S\|class\s\S\)<cr>
+autocmd FileType python nnoremap ÅÅ :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
+autocmd FileType python nnoremap åå :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
 
 " make ø and æ act as the corresponding keys on an american keyboard
 nmap ø [
