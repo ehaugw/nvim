@@ -15,9 +15,6 @@ autocmd BufEnter *.vim.local :setlocal filetype=vim
 function! Collapse() abort
     let startline = line(".")
     execute "norm %"
-    " while line(".") == startline
-    "     execute "norm J%"
-    " endwhile
     while line(".") != startline
         execute "norm kJ"
     endwhile
