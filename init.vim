@@ -1,5 +1,4 @@
 set encoding=utf-8
-" let g:python3_host_prog = 'C:\Users\eivind.haug-warberg\AppData\Local\Programs\Python\Python36\python.exe' " windows only
 let g:python3_host_prog="/usr/bin/python3"
 
 " easily load secondary configs if they exist
@@ -9,8 +8,6 @@ function! SecondaryConfig(...) abort
         exec "source " . filename
     endif
 endfunction
-
-autocmd BufEnter *.vim.local :setlocal filetype=vim
 
 function! Collapse() abort
     let startline = line(".")
@@ -29,10 +26,6 @@ tnoremap <Esc> <C-\><C-n>
 " rebind leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-" got to function / class definitions
-autocmd FileType python nnoremap ÅÅ :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
-autocmd FileType python nnoremap åå :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
 
 " make ø and æ act as the corresponding keys on an american keyboard
 nmap ø [
@@ -74,14 +67,7 @@ vnoremap <leader>=: :'<,'>! sed "s/ *: */:/g" \| column -t -s ":" -o " : "<cr>
 nnoremap <leader>=d: :%! sed "s/ *: */:/g"<cr>
 vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 
-" delete comment on same line
-autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
-autocmd FileType python nnoremap <leader>kd :.!sed "s/ *\\#[^\\#]*$//g"<cr>
-
-autocmd FileType vim vnoremap <leader>kd :!sed "s/ *\\\"[^\\\"]*$//g"<cr>
-autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
-
-" create new terminal on bottom
+" workflow commands
 :command! TERM :below 20 sp term://bash
 :command! TTERM :tabnew term://bash
 :command! VIMRC :e $MYVIMRC
@@ -90,20 +76,11 @@ autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 :command! LOAD :source Session.vim
 :command! SAVE :NERDTreeVCS | q | mksession!
 :command! SAVEQ :mksession! | qa
-
 :command! Qa :qa
 :command! Q :q
 :command! W :w
 :command! Wq :wq
-
-" execute file as script
-autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
-autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
-autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
-autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
-
-" create makefile for execute
-autocmd FileType python map <leader>cef :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi<CR>
+:command! DAB ! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi
 
 :command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
 :command! RELOAD :source $MYVIMRC
@@ -113,17 +90,14 @@ nnoremap <leader>fu A t(-_-t)<Esc>8h
 " FORMATTING KEYBINDIGNS
 " wrap word in space
 nnoremap <leader>fw lbi <Esc>2wi <Esc>
-" break function call to new line
-nnoremap <leader>fl %%a<CR><Esc>k$%i<CR><Esc>%
 " delete trailing
-nnoremap <leader>dtw :%s/\s\+$//gce<CR>
+nnoremap <leader>dtw :.s/\s\+$//g<CR>
 vnoremap <leader>dtw :s/\s\+$//g<cr>
+:command! DTW :%s/\s\+$//gce
 " wrap all operators
-map <leader>wao :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)/\1 \3 \5/gce<CR>
-" delete swap files
-:command! DAB ! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi
+:command! WAO :%s/\([a-zA-Z0-9)]\+\)\(\)\([\*\/+\-=]\+\)\(\)\([(a-zA-Z0-9]\+\)/\1 \3 \5/gce
 " convert CamelCase to snake_case
-map <leader>c2s :%s/\<\u\|\l\u/\= join(split(tolower(submatch(0)), '\zs'), '_')/gc
+:command! C2S :%s/\<\u\|\l\u/\= join(split(tolower(submatch(0)), '\zs'), '_')/gce
 
 " move selection up
 vnoremap J :m '>+1<CR>gv=gv
@@ -134,7 +108,6 @@ set expandtab                                                               " co
 set shiftwidth=4                                                            " << or >> moves 4 characters
 set tabstop=4
 set autoindent
-
 set splitright                                                              " put new split windows on the right side
 set updatetime=100                                                          " save swap and gitgutter every 0.1 second
 set hlsearch ic                                                             " ignore case when searching
@@ -142,20 +115,42 @@ set wildmode=full:lastused
 set wildmenu                                                                " better : mode auto complete
 set nrformats+=alpha                                                        " enable c-a c-x for letters
 set cursorline                                                              " will also highlight what you wrote last
-autocmd FileType python let python_highlight_all = 1
-syntax on                                                                   " enable syntax coloring
-syntax enable                                                               " do I need both
 set showmatch                                                               " show matching paranthes
 set nu rnu                                                                  " show line numbers
 set cc=120                                                                  " show end of 120 characters
 set fileformat=unix
 set signcolumn=yes                                                          " show column left to numbers, used by gitgutter
+syntax on                                                                   " enable syntax coloring
+syntax enable                                                               " do I need both?
 
 " CONFIGURE FLAKE 8
 " let g:flake8_show_in_file = 1
 let g:flake8_show_in_gutter = 1
 autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " END OF CONFIGURE FLAKE 8
+
+" got to function / class definitions
+autocmd FileType python nnoremap ÅÅ :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
+autocmd FileType python nnoremap åå :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
+
+" delete comment on same line
+autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
+autocmd FileType python nnoremap <leader>kd :.!sed "s/ *\\#[^\\#]*$//g"<cr>
+
+autocmd FileType vim vnoremap <leader>kd :!sed "s/ *\\\"[^\\\"]*$//g"<cr>
+autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
+
+" execute file as script
+autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
+autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
+autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
+autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
+
+" create makefile for execute
+:command! EF :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi
+
+" consider .vim.local to be .vim config files
+autocmd BufEnter *.vim.local :setlocal filetype=vim
 
 call SecondaryConfig('plug.vim')
 call SecondaryConfig('init.vim.local')
