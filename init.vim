@@ -152,8 +152,10 @@ autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " END OF CONFIGURE FLAKE 8
 
 " got to function / class definitions
-autocmd FileType python nnoremap ÅÅ :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
-autocmd FileType python nnoremap åå :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
+autocmd FileType python nnoremap Å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
+autocmd FileType python nnoremap å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
+autocmd FileType txt nnoremap Å :call search("^\\(#CHAPTER\\)", "b")<cr>
+autocmd FileType txt nnoremap å :call search("^\\(#CHAPTER\\)")<cr>
 
 " delete comment on same line
 autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
@@ -172,7 +174,8 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 :command! EF :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi
 
 " consider .vim.local to be .vim config files
-autocmd BufEnter *.vim.local :setlocal filetype=vim
+autocmd BufEnter,BufNewFile *.vim.local :setlocal filetype=vim
+autocmd BufEnter,BufNewFile *.txt :setlocal filetype=txt
 
 call SecondaryConfig('plug.vim')
 call SecondaryConfig('init.vim.local')
