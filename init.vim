@@ -33,6 +33,11 @@ nmap æ ]
 nmap Ø {
 nmap Æ }
 
+vmap ø [
+vmap æ ]
+vmap Ø {
+vmap Æ }
+
 " easier  []{} in insert mode
 function! NoNor() abort
     imap ø [
