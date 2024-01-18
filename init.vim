@@ -159,8 +159,8 @@ autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " got to function / class definitions
 autocmd FileType python nnoremap Å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
 autocmd FileType python nnoremap å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
-autocmd FileType txt nnoremap Å :call search("^\\(#CHAPTER\\)", "b")<cr>
-autocmd FileType txt nnoremap å :call search("^\\(#CHAPTER\\)")<cr>
+autocmd FileType txt nnoremap Å :call search("^\\(#\\sCHAPTER\\)", "b")<cr>
+autocmd FileType txt nnoremap å :call search("^\\(#\\sCHAPTER\\)")<cr>
 
 " delete comment on same line
 autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
