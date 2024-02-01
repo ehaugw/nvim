@@ -154,8 +154,8 @@ autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " END OF CONFIGURE FLAKE 8
 
 " got to function / class definitions
-autocmd FileType python nnoremap Å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
-autocmd FileType python nnoremap å :call search("^\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
+autocmd FileType python nnoremap Å :call search("^\\s*\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
+autocmd FileType python nnoremap å :call search("^\\s*\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
 autocmd FileType txt nnoremap Å :call search("^\\(#\\sCHAPTER\\)", "b")<cr>
 autocmd FileType txt nnoremap å :call search("^\\(#\\sCHAPTER\\)")<cr>
 
