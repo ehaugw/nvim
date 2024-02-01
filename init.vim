@@ -106,7 +106,7 @@ vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 :command! Wq :wq
 :command! DAB ! if [ -d ~/.local/share/nvim/swap ]; then rm ~/.local/share/nvim/swap/*; else rm ~/.local/state/nvim/swap/*; fi
 
-:command! -range=% EXPAND :'<,'>!sed -r "s/\s*([][}{)(])/\1\n/g" | sed -r "s/([^\^]+)([][}{)(])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
+:command! -range=% EXPAND :'<,'>!sed -r "s/\s*([[{(])([^]})])/\1\n\2/g" | sed -r "s/([^[{(\^]+)([]})])/\1\n\2/g" | sed -r "s/,([^$])/,\n\1/g"
 :command! RELOAD :source $MYVIMRC
 
 nnoremap <leader>fu A t(-_-t)<Esc>8h
