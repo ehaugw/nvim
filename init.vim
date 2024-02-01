@@ -100,9 +100,6 @@ vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 :command! VIMRC :e $MYVIMRC
 :command! VIMRCLOCAL :e $MYVIMRC.local
 :command! BASHRC :e ~/.bashrc
-:command! LOAD :source Session.vim
-:command! SAVE :NERDTreeVCS | q | mksession!
-:command! SAVEQ :mksession! | qa
 :command! Qa :qa
 :command! Q :q
 :command! W :w
@@ -190,3 +187,4 @@ call SecondaryConfig('win32yank.vim')
 call SecondaryConfig('nerdcommenter.vim')
 call SecondaryConfig('nerdtree.vim')
 call SecondaryConfig('zenburn.vim')
+call SecondaryConfig('sessions.vim')
