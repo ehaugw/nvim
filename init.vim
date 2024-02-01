@@ -13,7 +13,7 @@ function! Collapse() abort
     let startline = line(".")
     execute "norm %"
     while line(".") != startline
-        execute "norm kJ"
+        execute "norm kJx"
     endwhile
     execute "norm %"
 endfunction
