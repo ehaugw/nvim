@@ -24,3 +24,13 @@ function! LoadSessionBranched(...) abort
     endtry
     execute "source " . file_name
 endfunction
+
+function! EditSessionBranched(...) abort
+    try
+        let branch = trim(system('git branch --show-current | sed "s/[^a-zA-Z0-9_]//g"'))
+        let file_name = 'vimsessions/Session_' . branch . '.vim'
+    catch
+        let file_name = 'Session.vim'
+    endtry
+    execute "e " . file_name
+endfunction
