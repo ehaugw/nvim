@@ -60,6 +60,9 @@ call NoNor()
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
 vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
 
+nnoremap <leader>=f :%! sed "s/ *,/,/g" \| sed "s/,  */, /g" \| sed "s/, \#/,  \#/g"<cr>
+vnoremap <leader>=f :'<,'>! sed "s/ *,/,/g" \| sed "s/,  */, /g" \| sed "s/, \#/,  \#/g"<cr>
+
 " Align on , delimiter
 nnoremap <leader>=, :%! sed "s/ *, */,/g" \| column -t -s "," -o ", "<cr>
 vnoremap <leader>=, :'<,'>! sed "s/ *, */,/g" \| column -t -s "," -o ", "<cr>
