@@ -1,6 +1,8 @@
 set encoding=utf-8
 let g:python3_host_prog="/usr/bin/python3"
 
+:command PULLRC :!(cd ~/.config/nvim && git pull)
+
 " easily load secondary configs if they exist
 function! SecondaryConfig(...) abort
     let filename = fnamemodify($MYVIMRC, ':h') . '/' . a:1
