@@ -1,0 +1,3 @@
+How to get the correct column version
+    https://askubuntu.com/questions/1098248/how-can-i-install-the-util-linux-version-of-the-column-command-in-18-04
+    note that you may want to put it in /bin rather than ~/bin
