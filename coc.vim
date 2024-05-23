@@ -3,7 +3,7 @@ if exists('g:did_coc_loaded')
 endif
 
 let g:coc_disable_startup_warning=1
-let g:coc_global_extensions = ['coc-sql', 'coc-omnisharp', 'coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua', 'coc-sh']
+let g:coc_global_extensions = ['coc-clangd', 'coc-sql', 'coc-omnisharp', 'coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua', 'coc-sh']
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>n <Plug>(coc-references)

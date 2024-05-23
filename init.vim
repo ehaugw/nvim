@@ -163,8 +163,8 @@ autocmd FileType python map <leader>pep :call flake8#Flake8()<CR>
 " got to function / class definitions
 autocmd FileType python nnoremap Å :call search("^\\s*\\(def\\s\\S\\\|class\\s\\S\\)", "b")<cr>
 autocmd FileType python nnoremap å :call search("^\\s*\\(def\\s\\S\\\|class\\s\\S\\)")<cr>
-autocmd FileType txt nnoremap Å :call search("^\\(#\\sCHAPTER\\)", "b")<cr>
-autocmd FileType txt nnoremap å :call search("^\\(#\\sCHAPTER\\)")<cr>
+autocmd FileType txt nnoremap Å :call search("^\\(#\\sCHAPTER\\\|SESSION\\)", "b")<cr>
+autocmd FileType txt nnoremap å :call search("^\\(#\\sCHAPTER\\\|SESSION\\)")<cr>
 
 " delete comment on same line
 autocmd FileType python vnoremap <leader>kd :!sed "s/ *\\#[^\\#]*$//g"<cr>
@@ -177,6 +177,7 @@ autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
+autocmd FileType cpp    map <leader>ef :! if [ \! -f Makefile ]; then g++ % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
 autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
 
 " create makefile for execute
