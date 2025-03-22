@@ -177,7 +177,7 @@ autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
-autocmd FileType cpp    map <leader>ef :! if [ \! -f Makefile ]; then g++ % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
+autocmd FileType cpp    map <leader>ef :! if [ \! -f Makefile ]; then g++ % -pedantic-errors -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
 autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
 
 " create makefile for execute
