@@ -8,6 +8,8 @@ let g:coc_global_extensions = ['coc-clangd', 'coc-sql', 'coc-omnisharp', 'coc-js
 nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>n <Plug>(coc-references)
 nmap <leader>le :<C-u>CocList diagnostics<cr>
+nmap ]e :call CocAction('diagnosticNext')<cr>
+nmap [e :call CocAction('diagnosticPrevious')<cr>
 nmap <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#_select_confirm()
 
