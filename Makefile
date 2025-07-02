@@ -1,7 +1,7 @@
 all:
 	sudo apt install curl
 	sudo add-apt-repository ppa:deadsnakes/ppa
-	sudo apt-add-repository ppa:neovim-ppa/stable
+	sudo apt-add-repository ppa:neovim-ppa/unstable
 	sudo apt-get update
 	# if this fails
 	# confirm that you are using WSL1
