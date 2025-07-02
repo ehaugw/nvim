@@ -5,10 +5,16 @@
 :command! BSAVEQ :call SaveSessionBranched() | qa
 :command! BLOAD :call LoadSessionBranched()
 
+function! GetGitRoot(...) abort
+    let git_root = system('git rev-parse --show-toplevel')
+    let git_root = substitute(git_root, "\n$", "", "") " Remove trailing newline
+    return git_root
+endfunction
+
 function! SaveSessionBranched(...) abort
     try
         let branch = trim(system('git branch --show-current | sed "s/[^a-zA-Z0-9_]//g"'))
-        let file_name = 'vimsessions/Session_' . branch . '.vim'
+        let file_name = GetGitRoot() . '/vimsessions/Session_' . branch . '.vim'
     catch
         let file_name = 'Session.vim'
     endtry
@@ -18,7 +24,7 @@ endfunction
 function! LoadSessionBranched(...) abort
     try
         let branch = trim(system('git branch --show-current | sed "s/[^a-zA-Z0-9_]//g"'))
-        let file_name = 'vimsessions/Session_' . branch . '.vim'
+        let file_name = GetGitRoot() . '/vimsessions/Session_' . branch . '.vim'
     catch
         let file_name = 'Session.vim'
     endtry
@@ -28,7 +34,7 @@ endfunction
 function! EditSessionBranched(...) abort
     try
         let branch = trim(system('git branch --show-current | sed "s/[^a-zA-Z0-9_]//g"'))
-        let file_name = 'vimsessions/Session_' . branch . '.vim'
+        let file_name = GetGitRoot() . '/vimsessions/Session_' . branch . '.vim'
     catch
         let file_name = 'Session.vim'
     endtry
