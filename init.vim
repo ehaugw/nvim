@@ -183,6 +183,10 @@ autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run
 " create makefile for execute
 :command! EF :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi
 
+" create shortcuts to open user wide todo.txt and notes.txt
+:command! TODO :e ~/MYHOME/Documents/todo.txt
+:command! NOTES :e ~/MYHOME/Documents/notes.txt
+
 " consider .vim.local to be .vim config files
 autocmd BufEnter,BufNewFile *.vim.local :setlocal filetype=vim
 autocmd BufEnter,BufNewFile *.txt :setlocal filetype=txt
