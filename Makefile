@@ -23,14 +23,12 @@ all:
 	pip3 install pynvim --upgrade
 	pip3 install msgpack --upgrade
 	if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
-	if [ -d /mnt/c/Users/eha ]; then \
-		git config --global user.email "eha@banknorwegian.no"; \
-	else \
-		git config --global user.email "ehaugw@gmail.com"; \
-	fi
+	git config --global user.email "warberg@cdds.ai"; \
 	git config --global user.name "Eivind Haug-Warberg"
 	git config --global core.editor nvim
-	nvim -c 'PlugInstall'
+	# nvim -c 'PlugInstall'
+	nvim --headless +PlugInstall +qa
+
 win32yank:
 	curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
 	unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
