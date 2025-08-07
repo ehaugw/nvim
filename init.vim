@@ -174,6 +174,7 @@ autocmd FileType vim vnoremap <leader>kd :!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 autocmd FileType vim nnoremap <leader>kd :.!sed "s/ *\\\"[^\\\"]*$//g"<cr>
 
 " execute file as script
+autocmd FileType sh     map <leader>ef :! if [ \! -f Makefile ]; then sh $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType python map <leader>ef :! if [ \! -f Makefile ]; then python $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(realpath %); else make compileandexecute; fi<CR>
 autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
