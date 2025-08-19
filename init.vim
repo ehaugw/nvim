@@ -23,7 +23,7 @@ endfunction
 nnoremap <leader>col :COLLAPSE<cr>
 
 inoremap <special> jk <ESC>
-tnoremap <Esc> <C-\><C-n>
+tnoremap <special> jk <C-\><C-n>
 
 " rebind leader to space
 nnoremap <SPACE> <Nop>
