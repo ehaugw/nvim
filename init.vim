@@ -29,7 +29,7 @@ tnoremap <special> jk <C-\><C-n>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nnoremap , /
+nnoremap _ /
 
 " make ø and æ act as the corresponding keys on an american keyboard
 nmap ø [
