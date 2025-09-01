@@ -1,4 +1,5 @@
-function! LoadPathAtCursor(...) abort
+"a b c"
+function! SplitAndLoadPathsAtCursor(...) abort
     " save original buffer
     let old_buffer = getreg("\"")
 
@@ -22,22 +23,26 @@ function! LoadPathAtCursor(...) abort
         call cursor(old_line, old_col)
     endif
 
+    call SplitAndLoadPaths(getreg("\""), a:0)
+
+    " insert original value into buffer
+    call setreg("\"", old_buffer)
+endfunction
+
+function! SplitAndLoadPaths(paths, ...) abort
     " split on comma
-    for section in split(getreg("\""), "\W*,\W*")
+    for section in split(a:paths, '\s*,\s*')
         " split on non-word
-        for word in split(section, "\W+")
-            if a:0
+        for word in split(section, '\s\+')
+            if a:1
                 execute 'edit' fnameescape(systemlist('find . -name ' . word)[0])
             else
                 execute "e " . word
             endif
         endfor
     endfor
-
-    " insert original value into buffer
-    call setreg("\"", old_buffer)
 endfunction
 
-:command! E :call LoadPathAtCursor()
-:command! FE :call LoadPathAtCursor(1)
+:command! E :call SplitAndLoadPathsAtCursor()
+:command! FE :call SplitAndLoadPathsAtCursor(1)
 " :command! FE :norm yi" | :execute 'edit' fnameescape(systemlist('find src -name "run_interceptor.py"')[0])
