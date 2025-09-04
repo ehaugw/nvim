@@ -35,9 +35,13 @@ function! SplitAndLoadPaths(paths, ...) abort
         " split on non-word
         for word in split(section, '\s\+')
             if a:1
-                execute 'edit' fnameescape(systemlist('find . -name ' . word)[0])
+                for filehit in systemlist('find . -name ' . word)
+                    execute 'edit' fnameescape(filehit)
+                    echo fnameescape(filehit)
+                endfor
             else
                 execute "e " . word
+                echo word
             endif
         endfor
     endfor
