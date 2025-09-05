@@ -31,6 +31,7 @@ let mapleader=" "
 
 nnoremap ø /
 nnoremap Ø ?
+nnoremap æ @
 
 " Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
