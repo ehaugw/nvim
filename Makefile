@@ -1,22 +1,22 @@
 all:
-	sudo apt install curl
-	sudo add-apt-repository ppa:deadsnakes/ppa
-	sudo apt-add-repository ppa:neovim-ppa/unstable
-	sudo apt-get update
+	sudo apt install curl -y
+	sudo add-apt-repository ppa:deadsnakes/ppa -y
+	sudo apt-add-repository ppa:neovim-ppa/unstable -y
+	sudo apt-get update -y
 	# if this fails
 	# confirm that you are using WSL1
 	# https://askubuntu.com/questions/1402336/apt-trying-to-fetch-versions-not-available-in-archive-ubuntu-com-ubuntu-pool-mai
 	
-	sudo apt-get upgrade
+	sudo apt-get upgrade -y
 	# if this fails
 	# https://askubuntu.com/questions/1305141/failed-to-fetch-security-undetermined-error-ip-91-189-91-38-80-in-ubuntu-20-0
 	
-	sudo apt install neovim
-	sudo apt install python3-pip
-	sudo apt install python3.10-venv
+	sudo apt install neovim -y
+	sudo apt install python3-pip -y
+	sudo apt install python3.10-venv -y
 	if ! [ -d /mnt/c/Users/eha ]; then \
-		sudo apt install nodejs; \
-		sudo apt install npm; \
+		sudo apt install nodejs -y; \
+		sudo apt install npm -y; \
 		sudo npm install -g n; \
 		sudo n stable; \
 	fi
