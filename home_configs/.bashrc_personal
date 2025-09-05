@@ -1,0 +1,45 @@
+########### EIVIND CUSTOM ########### 
+# Display git branch in console
+# Add in ~/.bashrc or ~/.bash_profile
+function parse_git_branch () {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+ 
+RED="\[\033[01;31m\]"
+YELLOW="\[\033[01;33m\]"
+GREEN="\[\033[01;32m\]"
+BLUE="\[\033[01;34m\]"
+NO_COLOR="\[\033[00m\]"
+
+# without host
+PS1="$GREEN\u$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
+# with host
+# PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
+
+# export DISPLAY=localhost:0.0
+
+bind 'set bell-style none'
+bind 'set bell-style visible'
+
+# get commit message of a hash
+gitcommitmessage() {
+    git log --format=%B -n 1 $1
+}
+
+nfind() {
+    nvim -c "call SplitAndLoadPaths(\"$*\", 1)"
+}
+
+alias notes="nvim -c \":NOTES\""
+alias todo="nvim -c \":TODO\""
+alias nvimo="nvim -c \"source Session.vim\""
+alias nvimb="nvim -c \"call LoadSessionBranched()\""
+alias nvime="nvim -c \"call EditSessionBranched()\""
+alias cdws="cd ~/MYHOME/Documents/cdds_ws"
+alias cdws2="cd ~/MYHOME/Documents/cdds_ws_2"
+alias cddocs="cd ~/MYHOME/Documents/cdds_docs"
+alias qgc="~/MYHOME/Documents/QGroundControl-x86_64.AppImage > /dev/null 2>&1 &"
+alias ndiff="nvim \$(git diff --name-only)"
+alias ndiffmain="nvim \$(git diff main --name-only)"
+alias pygrep="grep -r src/ --include=\"*.py\" -e"
+alias ff="firefox > /dev/null 2>&1 &"
