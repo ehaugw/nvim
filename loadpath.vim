@@ -34,7 +34,7 @@ function! SplitAndLoadPaths(paths, ...) abort
     for section in split(a:paths, '\s*,\s*')
         " split on non-word
         for word in split(section, '\s\+')
-            if a:1
+            if a:1 && stridx(word, "~/") == -1
                 for filehit in systemlist('find . -name ' . word)
                     execute 'edit' fnameescape(filehit)
                     echo fnameescape(filehit)
