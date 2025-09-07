@@ -1,4 +1,3 @@
-"a b c"
 function! SplitAndLoadPathsAtCursor(...) abort
     " save original buffer
     let old_buffer = getreg("\"")
@@ -49,4 +48,3 @@ endfunction
 
 :command! E :call SplitAndLoadPathsAtCursor()
 :command! FE :call SplitAndLoadPathsAtCursor(1)
-" :command! FE :norm yi" | :execute 'edit' fnameescape(systemlist('find src -name "run_interceptor.py"')[0])
