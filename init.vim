@@ -126,6 +126,7 @@ set nu rnu                                                                  " sh
 set cc=120                                                                  " show end of 120 characters
 set fileformat=unix
 set signcolumn=yes                                                          " show column left to numbers, used by gitgutter
+set path+=**                                                                " allow recursive search from current directory
 syntax on                                                                   " enable syntax coloring
 syntax enable                                                               " do I need both?
 
