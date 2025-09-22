@@ -29,6 +29,11 @@ all:
 	# nvim -c 'PlugInstall'
 	nvim --headless +PlugInstall +qa
 
+other:
+	# Remap Caps Lock to Control
+	setxkbmap -option ctrl:nocaps
+	gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+
 win32yank:
 	curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
 	unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
