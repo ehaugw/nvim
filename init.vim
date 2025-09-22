@@ -80,8 +80,9 @@ vnoremap <leader>=d: :'<,'>! sed "s/ *: */:/g"<cr>
 :command! TERM :below 20 sp term://bash
 :command! TTERM :tabnew term://bash
 :command! VIMRC :e $MYVIMRC
-:command! VIMRCLOCAL :e $MYVIMRC.local
+:command! VIMRCLOCAL :e $MYVIMRC_personal
 :command! BASHRC :e ~/.bashrc
+:command! TMUX :e ~/.tmux.conf
 :command! Qa :qa
 :command! Q :q
 :command! W :w
