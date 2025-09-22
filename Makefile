@@ -6,11 +6,11 @@ all:
 	# if this fails
 	# confirm that you are using WSL1
 	# https://askubuntu.com/questions/1402336/apt-trying-to-fetch-versions-not-available-in-archive-ubuntu-com-ubuntu-pool-mai
-	
+	#
 	sudo apt-get upgrade -y
 	# if this fails
 	# https://askubuntu.com/questions/1305141/failed-to-fetch-security-undetermined-error-ip-91-189-91-38-80-in-ubuntu-20-0
-	
+	#
 	sudo apt install neovim -y
 	sudo apt install python3-pip -y
 	sudo apt install python3.10-venv -y
@@ -29,10 +29,17 @@ all:
 	# nvim -c 'PlugInstall'
 	nvim --headless +PlugInstall +qa
 
-other:
+linux:
 	# Remap Caps Lock to Control
+	cp home_configs/.bashrc_personal ~/.bashrc_personal
+	cp home_configs/.tmux.conf ~/.tmux.conf
+	cp home_configs/.ssh/config ~/.ssh/config
+	#
 	setxkbmap -option ctrl:nocaps
 	gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+	#
+	git remote set-url origin git@github-ehaugw:ehaugw/nvim.git
+	echo "remember to rename your current id_rsa to id_rsa_ehaugw"
 
 win32yank:
 	curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
