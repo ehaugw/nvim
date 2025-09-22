@@ -20,11 +20,11 @@ Save this as ~/.ssh/config
         IdentitiesOnly yes
 
     # Second GitHub account
-        Host github-other
+        Host github-ehaugw
         HostName github.com
         User git
-        IdentityFile ~/.ssh/id_rsa_github_other
+        IdentityFile ~/.ssh/id_rsa_ehaugw
         IdentitiesOnly yes
 
 Run this to use your secondary identity for the nvim repo
-    git remote set-url origin git@github-nvim:ehaugw/nvim.git
+    git remote set-url origin git@github-ehaugw:ehaugw/nvim.git
