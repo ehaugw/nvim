@@ -29,17 +29,22 @@ all:
 	# nvim -c 'PlugInstall'
 	nvim --headless +PlugInstall +qa
 
-linux:
-	# Remap Caps Lock to Control
+gnome:
+	# copy config files from here to computer
 	cp home_configs/.bashrc_personal ~/.bashrc_personal
 	cp home_configs/.tmux.conf ~/.tmux.conf
 	cp home_configs/.ssh/config ~/.ssh/config
-	#
+	# Remap Caps Lock to Control
 	setxkbmap -option ctrl:nocaps
 	gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
-	#
+	# set the nvim repo to use a secondary key, to free up the primary key for work purposes
 	git remote set-url origin git@github-ehaugw:ehaugw/nvim.git
 	echo "remember to rename your current id_rsa to id_rsa_ehaugw"
+	# hide dock
+	gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+	gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
+	gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+
 
 win32yank:
 	curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
