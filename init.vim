@@ -1,5 +1,5 @@
 set encoding=utf-8
-let g:python3_host_prog="/usr/bin/python3"
+let g:python3_host_prog = $HOME . '/.local/share/nvim/venv/bin/python'
 
 :command PULLRC :!(cd ~/.config/nvim && git pull)
 

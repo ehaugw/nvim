@@ -1,3 +1,5 @@
+VENV := ${HOME}/.local/share/nvim/venv
+
 all:
 	sudo apt install curl -y
 	sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -20,13 +22,11 @@ all:
 		sudo npm install -g n; \
 		sudo n stable; \
 	fi
-	pip3 install pynvim --upgrade
-	pip3 install msgpack --upgrade
-	if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
-	git config --global user.email "warberg@cdds.ai"; \
-	git config --global user.name "Eivind Haug-Warberg"
 	git config --global core.editor nvim
-	# nvim -c 'PlugInstall'
+	python3 -m venv $(VENV)
+	$(VENV)/bin/pip install --upgrade pip
+	$(VENV)/bin/pip install black pynvim msgpack
+	if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 	nvim --headless +PlugInstall +qa
 
 gnome:
