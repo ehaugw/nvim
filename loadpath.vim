@@ -11,6 +11,7 @@ function! SplitAndLoadPathsAtCursor(...) abort
 
     " copy inside quotation marks
     execute "norm yi\""
+    execute "norm yi'"
 
     " return to original position
     call cursor(old_line, old_col)
