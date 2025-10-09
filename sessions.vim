@@ -19,6 +19,12 @@ function! SaveSessionBranched(...) abort
         let file_name = 'Session.vim'
     endtry
     execute "mksession! " . file_name
+
+    " Compatability with mounted docker dirs
+    let git_root = substitute(GetGitRoot(), expand('~/'), "~/", "g")
+    " silent: execute "!sed -i \"s|cd " . git_root . "|execute 'cd ' . GetGitRoot()|g\" " . file_name
+    silent: execute "!sed -i \"s|cd " . git_root . "||g\" " . file_name
+    " silent: execute "!sed -i \"s|" . git_root . "||g\" " . file_name
 endfunction
 
 function! LoadSessionBranched(...) abort
