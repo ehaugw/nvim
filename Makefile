@@ -1,5 +1,9 @@
 VENV := ${HOME}/.local/share/nvim/venv
 
+NODE_VERSION ?= 20
+NVM_DIR ?= $(HOME)/.nvm
+NODE_INSTALL_DIR ?= $(HOME)/.local/share/nvim/node-env
+
 all:
 	sudo apt install curl -y
 	sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -16,12 +20,7 @@ all:
 	sudo apt install neovim -y
 	sudo apt install python3-pip -y
 	sudo apt install python3.10-venv -y
-	if ! [ -d /mnt/c/Users/eha ]; then \
-		sudo apt install nodejs -y; \
-		sudo apt install npm -y; \
-		sudo npm install -g n; \
-		sudo n stable; \
-	fi
+	make node
 	git config --global core.editor nvim
 	git config --global merge.tool nvimdiff
 	git config --global mergetool.nvimdiff.cmd "nvim -d \"\$$LOCAL\" \"\$$REMOTE\" \"\$$MERGED\" -c \"wincmd w\""
@@ -31,6 +30,19 @@ all:
 	$(VENV)/bin/pip install black pynvim msgpack
 	if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 	nvim --headless +PlugInstall +qa
+
+.PHONY: node
+node:
+	@if [ ! -d "$(NVM_DIR)" ]; then \
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash; \
+	fi; \
+	export NVM_DIR="$(NVM_DIR)"; \
+	export NVM_NODEJS_ORG_MIRROR="https://nodejs.org/dist"; \
+	[ -s "$$NVM_DIR/nvm.sh" ] && . "$$NVM_DIR/nvm.sh"; \
+	nvm install $(NODE_VERSION); \
+	FULL_NODE_DIR=$$(nvm which $(NODE_VERSION) | xargs dirname | xargs dirname); \
+	mkdir -p $(NODE_INSTALL_DIR); \
+	cp -r $$FULL_NODE_DIR/* $(NODE_INSTALL_DIR)/; \
 
 gnome:
 	# copy config files from here to computer
