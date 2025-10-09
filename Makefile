@@ -23,6 +23,9 @@ all:
 		sudo n stable; \
 	fi
 	git config --global core.editor nvim
+	git config --global merge.tool nvimdiff
+	git config --global mergetool.nvimdiff.cmd "nvim -d \"\$$LOCAL\" \"\$$REMOTE\" \"\$$MERGED\" -c \"wincmd w\""
+	git config --global mergetool.prompt false
 	python3 -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip
 	$(VENV)/bin/pip install black pynvim msgpack
