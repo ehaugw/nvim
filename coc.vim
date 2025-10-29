@@ -2,9 +2,6 @@ if exists('g:did_coc_loaded')
   finish
 endif
 
-" Point coc.nvim to the isolated Node
-" let g:coc_node_path = '/home/eivind/.local/share/nvim/node-env/bin/node'
-
 let g:coc_disable_startup_warning=1
 let g:coc_global_extensions = ['coc-clangd', 'coc-sql', 'coc-omnisharp', 'coc-json', 'coc-tsserver', 'coc-pyright', 'coc-lua', 'coc-sh']
 

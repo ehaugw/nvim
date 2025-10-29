@@ -1,7 +1,6 @@
 VENV := ${HOME}/.local/share/nvim/venv
 
-NODE_VERSION ?= 20
-NVM_DIR ?= $(HOME)/.nvm
+NODE_VERSION ?= 20.19.5
 NODE_INSTALL_DIR ?= $(HOME)/.local/share/nvim/node-env
 
 all:
@@ -33,16 +32,12 @@ all:
 
 .PHONY: node
 node:
-	@if [ ! -d "$(NVM_DIR)" ]; then \
-		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash; \
-	fi; \
-	export NVM_DIR="$(NVM_DIR)"; \
-	export NVM_NODEJS_ORG_MIRROR="https://nodejs.org/dist"; \
-	[ -s "$$NVM_DIR/nvm.sh" ] && . "$$NVM_DIR/nvm.sh"; \
-	nvm install $(NODE_VERSION); \
-	FULL_NODE_DIR=$$(nvm which $(NODE_VERSION) | xargs dirname | xargs dirname); \
-	mkdir -p $(NODE_INSTALL_DIR); \
-	cp -r $$FULL_NODE_DIR/* $(NODE_INSTALL_DIR)/; \
+	rm -rf $(NODE_INSTALL_DIR)
+	mkdir -p $(NODE_INSTALL_DIR)
+	curl -L https://nodejs.org/dist/v$(NODE_VERSION)/node-v$(NODE_VERSION)-linux-x64.tar.xz -o node.tar.xz
+	tar -xf node.tar.xz --strip-components=1 -C $(NODE_INSTALL_DIR)
+	$(NODE_INSTALL_DIR)/bin/npm install -g neovim
+	rm node.tar.xz
 
 gnome:
 	# copy config files from here to computer
