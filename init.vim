@@ -34,6 +34,8 @@ nnoremap ø /
 nnoremap Ø ?
 nnoremap æ @
 
+nnoremap gp :b#<cr>
+
 " Calculate highlighted text as math
 vnoremap <leader>calc c<C-r>=<C-r>"<CR><Esc>
 vnoremap <leader>equ c<C-r>" = <C-r>=<C-r>"<CR><Esc>
