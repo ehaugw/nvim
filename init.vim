@@ -131,8 +131,6 @@ set cc=120                                                                  " sh
 set fileformat=unix
 set signcolumn=yes                                                          " show column left to numbers, used by gitgutter
 set path+=**                                                                " allow recursive search from current directory
-syntax on                                                                   " enable syntax coloring
-syntax enable                                                               " do I need both?
 
 " CONFIGURE FLAKE 8
 " let g:flake8_show_in_file = 1
@@ -179,7 +177,7 @@ call SecondaryConfig('coc.vim')
 call SecondaryConfig('win32yank.vim')
 call SecondaryConfig('nerdcommenter.vim')
 call SecondaryConfig('nerdtree.vim')
-call SecondaryConfig('zenburn.vim')
+call SecondaryConfig('colorscheme.vim')
 call SecondaryConfig('sessions.vim')
 call SecondaryConfig('aligncomments.vim')
 call SecondaryConfig('loadpath.vim')
