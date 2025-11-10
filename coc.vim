@@ -12,6 +12,7 @@ nmap ]e :call CocAction('diagnosticNext')<cr>
 nmap [e :call CocAction('diagnosticPrevious')<cr>
 nmap <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#_select_confirm()
+nmap <leader>oi :CocCommand pyright.organizeimports<cr>
 
 " USE K TO SHOW DOCUMENTATION USING COC WHEN POSSIBLE
 nnoremap <silent> K :call <SID>show_documentation()<CR>
