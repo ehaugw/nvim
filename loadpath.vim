@@ -34,11 +34,20 @@ function! SplitAndLoadPaths(paths, ...) abort
     for section in split(a:paths, '\s*,\s*')
         " split on non-word
         for word in split(section, '\s\+')
-            if a:1 && stridx(word, "~/") == -1
-                for filehit in systemlist('find ' . trim(system('dirname '  . word)) . ' -name ' . trim(system('basename ' . word)))
-                    execute 'edit' fnameescape(filehit)
-                    echo fnameescape(filehit)
-                endfor
+            if a:1
+                if stridx(word, "~/") == -1
+                    for filehit in systemlist('find ' . trim(system('dirname '  . word)) . ' -name ' . trim(system('basename ' . word)))
+                        if filereadable(filehit)
+                            execute 'edit' fnameescape(filehit)
+                            echo fnameescape(filehit)
+                        endif
+                    endfor
+                else
+                    if filereadable(word)
+                        execute "e " . word
+                        echo word
+                    endif
+                endif
             else
                 execute "e " . word
                 echo word
