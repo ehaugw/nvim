@@ -158,6 +158,7 @@ autocmd FileType lua    map <leader>ef :! if [ \! -f Makefile ]; then lua5.1 $(r
 autocmd FileType c      map <leader>ef :! if [ \! -f Makefile ]; then gcc % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
 autocmd FileType cpp    map <leader>ef :! if [ \! -f Makefile ]; then g++ % -o a.out && ./a.out && rm a.out; else make compileandexecute; fi<CR>
 autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
+autocmd FileType make   map <leader>ef :! if [ \! -f Makefile ]; then make; else make compileandexecute; fi<CR>
 
 " create makefile for execute
 :command! EF :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi
