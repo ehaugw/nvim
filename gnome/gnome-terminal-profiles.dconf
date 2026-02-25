@@ -1,0 +1,43 @@
+[/]
+default='d5dcc9ed-6400-4904-a806-f8150a36adfc'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'd5dcc9ed-6400-4904-a806-f8150a36adfc', '8d173c09-35a0-49c5-b6f0-f9864c4377b8']
+
+[:8d173c09-35a0-49c5-b6f0-f9864c4377b8]
+audible-bell=false
+background-color='rgb(17,14,15)'
+background-transparency-percent=0
+bold-color='rgb(255,241,176)'
+bold-color-same-as-fg=true
+bold-is-bright=false
+cursor-colors-set=false
+cursor-foreground-color='rgb(217,191,119)'
+foreground-color='rgb(220,207,154)'
+highlight-background-color='rgb(58,58,58)'
+highlight-colors-set=true
+highlight-foreground-color='rgb(234,220,166)'
+palette=['rgb(62,62,70)', 'rgb(182,90,48)', 'rgb(122,140,110)', 'rgb(217,186,103)', 'rgb(104,138,178)', 'rgb(156,124,158)', 'rgb(123,170,171)', 'rgb(240,231,197)', 'rgb(61,61,61)', 'rgb(198,114,75)', 'rgb(172,191,142)', 'rgb(229,221,159)', 'rgb(144,176,201)', 'rgb(204,176,204)', 'rgb(175,218,218)', 'rgb(255,255,232)']
+scrollbar-policy='never'
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=true
+visible-name='Prestige Contrast'
+
+[:d5dcc9ed-6400-4904-a806-f8150a36adfc]
+audible-bell=false
+background-color='rgb(71,66,68)'
+background-transparency-percent=5
+bold-color='rgb(255,241,176)'
+bold-color-same-as-fg=true
+bold-is-bright=false
+cursor-colors-set=false
+cursor-foreground-color='rgb(217,191,119)'
+foreground-color='rgb(220,207,154)'
+highlight-background-color='rgb(58,58,58)'
+highlight-colors-set=true
+highlight-foreground-color='rgb(234,220,166)'
+palette=['rgb(62,62,70)', 'rgb(182,90,48)', 'rgb(122,140,110)', 'rgb(217,186,103)', 'rgb(104,138,178)', 'rgb(156,124,158)', 'rgb(123,170,171)', 'rgb(240,231,197)', 'rgb(71,71,80)', 'rgb(198,114,75)', 'rgb(172,191,142)', 'rgb(229,221,159)', 'rgb(144,176,201)', 'rgb(204,176,204)', 'rgb(175,218,218)', 'rgb(255,255,232)']
+scrollbar-policy='never'
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=true
+visible-name='Prestige'

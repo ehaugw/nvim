@@ -44,6 +44,7 @@ other:
 	sudo apt install xclip
 	sudo apt install tmux
 
+.PHONY: gnome
 gnome:
 	# copy config files from here to computer
 	cp home_configs/.bashrc_personal ~/.bashrc_personal
@@ -59,6 +60,7 @@ gnome:
 	gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 	gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
 	gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+	dconf load /org/gnome/terminal/legacy/profiles:/ < gnome/gnome-terminal-profiles.dconf
 
 
 win32yank:
