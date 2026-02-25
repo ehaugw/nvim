@@ -19,6 +19,7 @@ all:
 	sudo apt install neovim -y
 	sudo apt install python3-pip -y
 	sudo apt install python3.10-venv -y
+	make other
 	make node
 	git config --global core.editor nvim
 	git config --global merge.tool nvimdiff
@@ -36,8 +37,12 @@ node:
 	mkdir -p $(NODE_INSTALL_DIR)
 	curl -L https://nodejs.org/dist/v$(NODE_VERSION)/node-v$(NODE_VERSION)-linux-x64.tar.xz -o node.tar.xz
 	tar -xf node.tar.xz --strip-components=1 -C $(NODE_INSTALL_DIR)
-	$(NODE_INSTALL_DIR)/bin/npm install -g neovim
+	$(NODE_INSTALL_DIR)/bin/node $(NODE_INSTALL_DIR)/bin/npm install -g neovim
 	rm node.tar.xz
+
+other:
+	sudo apt install xclip
+	sudo apt install tmux
 
 gnome:
 	# copy config files from here to computer
