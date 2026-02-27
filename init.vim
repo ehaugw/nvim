@@ -1,6 +1,7 @@
 set encoding=utf-8
 let g:python3_host_prog = $HOME . '/.local/share/nvim/venv/bin/python'
 let g:node_host_prog    = $HOME . '/.local/share/nvim/node-env/bin/node'
+let $PATH = $HOME . '/.local/share/nvim/node-env/bin:' . $PATH
 
 :command PULLRC :!(cd ~/.config/nvim && git pull)
 

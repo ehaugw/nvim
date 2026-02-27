@@ -7,6 +7,11 @@ LINUX: delete win32yank.vim when on linux, then run git update-index --skip-work
 
 INSTALL NEOVIM
 make [all]
+add node to path in .bashrc
+    export PATH="$HOME/.local/share/nvim/node-env/bin:$PATH"
+
+OTHER
+load .bashrc_personal the same way was .bash_aliases
 
 
 ON SYSTEMS WHERE id_rsa refers to another user:
