@@ -50,6 +50,8 @@ gnome:
 	cp home_configs/.bashrc_personal ~/.bashrc_personal
 	cp home_configs/.tmux.conf ~/.tmux.conf
 	cp home_configs/.ssh/config ~/.ssh/config
+	cp home_configs/.gitignore ~/.gitignore
+	git config --global core.excludesFile '~/.gitignore'
 	# Remap Caps Lock to Control
 	setxkbmap -option ctrl:nocaps
 	gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
