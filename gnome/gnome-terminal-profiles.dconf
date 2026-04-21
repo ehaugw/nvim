@@ -24,7 +24,7 @@ visible-name='Prestige Contrast'
 
 [:d5dcc9ed-6400-4904-a806-f8150a36adfc]
 audible-bell=false
-background-color='rgb(71,66,68)'
+background-color='rgb(54,51,52)'
 background-transparency-percent=5
 bold-color='rgb(255,241,176)'
 bold-color-same-as-fg=true

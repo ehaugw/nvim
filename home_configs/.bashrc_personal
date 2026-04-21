@@ -1,4 +1,5 @@
 ########### EIVIND CUSTOM ########### 
+LC_NUMERIC=C
 # Display git branch in console
 # Add in ~/.bashrc or ~/.bash_profile
 function parse_git_branch () {
