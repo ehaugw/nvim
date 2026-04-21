@@ -44,6 +44,13 @@ other:
 	sudo apt install xclip
 	sudo apt install tmux
 
+collect:
+	cp ~/.bashrc_personal home_configs/.bashrc_personal
+	cp ~/.tmux.conf home_configs/.tmux.conf
+	cp ~/.ssh/config home_configs/.ssh/config
+	cp ~/.gitignore home_configs/.gitignore
+	dconf dump /org/gnome/terminal/legacy/profiles:/ > gnome/gnome-terminal-profiles.dconf
+
 .PHONY: gnome
 gnome:
 	# copy config files from here to computer
