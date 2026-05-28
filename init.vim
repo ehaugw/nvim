@@ -177,6 +177,9 @@ autocmd FileType make   map <leader>tf :! make test<CR>
 :command! TODO :e ~/MYHOME/Documents/todo.txt
 :command! NOTES :e ~/MYHOME/Documents/notes.txt
 
+:command! -nargs=1 PYGREP !grep -r src --include="*.py" -e "<args>"
+:command! -nargs=1 CGREP !grep -r src --include="*.c*" -e "<args>"
+
 " consider .vim.local to be .vim config files
 autocmd BufEnter,BufNewFile *.vim.local :setlocal filetype=vim
 autocmd BufEnter,BufNewFile *.txt :setlocal filetype=txt
