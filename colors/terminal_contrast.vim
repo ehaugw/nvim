@@ -89,7 +89,8 @@ hi Boolean         ctermfg=9       ctermbg=none    cterm=none
 hi Float           ctermfg=9       ctermbg=none    cterm=none
                                    
 hi Identifier      ctermfg=15      ctermbg=none    cterm=none
-hi Function        ctermfg=3       ctermbg=none    cterm=none
+hi Function        ctermfg=7      ctermbg=none    cterm=none
+hi link pythonBuiltin Type
                                    
 " --------------------------------
 " Language constructs              
@@ -119,11 +120,12 @@ hi Define          ctermfg=6       ctermbg=none    cterm=none
 hi Macro           ctermfg=6       ctermbg=none    cterm=none
 hi PreCondit       ctermfg=6       ctermbg=none    cterm=none
                                    
-hi Type            ctermfg=none    ctermbg=none    cterm=none
+hi Type            ctermfg=3       ctermbg=none    cterm=none
 hi StorageClass    ctermfg=6       ctermbg=none    cterm=none
 hi Structure       ctermfg=13      ctermbg=none    cterm=none
 hi Typedef         ctermfg=0       ctermbg=none    cterm=none
-                                   
+hi cppNamespace    ctermfg=5    ctermbg=none    cterm=none
+
 " --------------------------------
 " Diff                             
 " --------------------------------
