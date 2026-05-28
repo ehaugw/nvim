@@ -32,6 +32,7 @@ all:
 	$(VENV)/bin/pip install black pynvim msgpack
 	if [ ! -e "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]; then curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 	nvim --headless +PlugInstall +qa
+	# do CocUpdate manually to install plugins, should be changed to be automated too, but it's tricky because it's async
 
 .PHONY: node
 node:
