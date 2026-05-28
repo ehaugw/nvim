@@ -11,5 +11,8 @@
         ".git",
         "pyproject.toml"
     ],
-    "python.analysis.diagnosticMode": "openFilesOnly"
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": ["--background-index", "--clang-tidy"],
+    "clangd.fallbackFlags": ["-std=c++23"]
 }

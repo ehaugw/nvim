@@ -19,6 +19,8 @@ all:
 	sudo apt install neovim -y
 	sudo apt install python3-pip -y
 	sudo apt install python3.10-venv -y
+	sudo apt install clangd-12 -y
+	sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 	make other
 	make node
 	git config --global core.editor nvim
