@@ -161,6 +161,15 @@ autocmd FileType cpp    map <leader>ef :! if [ \! -f Makefile ]; then g++ % -o a
 autocmd FileType cs     map <leader>ef :! if [ \! -f Makefile ]; then dotnet run; else make compileandexecute; fi<CR>
 autocmd FileType make   map <leader>ef :! if [ \! -f Makefile ]; then make; else make compileandexecute; fi<CR>
 
+" run test file by file ending
+autocmd FileType sh     map <leader>tf :! make test<CR>
+autocmd FileType python map <leader>tf :! if [ \! -f Makefile ]; then if command -v python3 > /dev/null 2>&1; then python3 -m unittest test.py; else python -m unittest test.py; fi; else make test; fi<CR>
+autocmd FileType lua    map <leader>tf :! make teste test; fi<CR>
+autocmd FileType c      map <leader>tf :! make testm a.out; else make test; fi<CR>
+autocmd FileType cpp    map <leader>tf :! make testm a.out; else make test; fi<CR>
+autocmd FileType cs     map <leader>tf :! make test<CR>
+autocmd FileType make   map <leader>tf :! make test<CR>
+
 " create makefile for execute
 :command! EF :! if [ \! -f Makefile ]; then echo $'compileandexecute:\n\tpython %' > Makefile; fi
 
